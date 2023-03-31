@@ -5,6 +5,8 @@ xcode-select --install
 
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"')
+eval "$(/opt/homebrew/bin/brew shellenv)"
 brew analytics off
 
 # Brew Taps
