@@ -9,6 +9,8 @@ brew analytics off
 
 # Brew Taps
 brew tap homebrew/cask-fonts
+brew tap koekeishiya/formulae
+brew tap FelixKratz/formulae
 
 brew install mas
 brew install neovim
@@ -25,16 +27,17 @@ brew install yabai
 brew install tree
 brew install sketchybar
 brew install go
+brew install rust
 brew install curl
 brew install gcc
 brew install micro
 brew install node
 brew install nnn 
 brew install starship
-brew install fzh
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
-brew install zsh-completions-git
+brew install zsh-completions
+brew install zsh-vi-mode
 
 # Brew Casks
 brew install --cask alacritty
@@ -45,11 +48,11 @@ brew install --cask monitorcontrol
 mas install 497799835 #xCode
 
 # Copying config files
-[ ! -d "$HOME/dotfiles" ] && git clone --bare git@github.com:Xaqiri/dotfiles.git $HOME/dotfiles
+[ ! -d "$HOME/dotfiles" ] && git clone --bare https://github.com/Xaqiri/dotfiles.git $HOME/dotfiles
 git --git-dir=$HOME/dotfiles/ --work-tree=$HOME checkout master
 
 # Installing Fonts
-git clone git@github.com:shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font
+git clone https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font
 mv /tmp/SFMono_Nerd_Font/* $HOME/Library/Fonts
 rm -rf /tmp/SFMono_Nerd_Font/
 
