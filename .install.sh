@@ -36,12 +36,14 @@ brew install micro
 brew install node
 brew install nnn 
 brew install starship
+brew install sf-symbols
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
 brew install zsh-completions
 brew install zsh-vi-mode
 
 # Brew Casks
+brew install --cask font-hack-nerd-font
 brew install --cask alacritty
 brew install --cask kitty
 brew install --cask monitorcontrol
