@@ -1,3 +1,6 @@
+// Update and upgrade 
+sudo apt upgrade && sudo apt update
+
 // Install some dependencies
 sudo apt-get install ninja-build gettext libtool-bin cmake g++ pkg-config unzip curl
 
@@ -50,7 +53,25 @@ rm lazygit
 rm lazygit.tar.gz
 
 // Downloading config files
-[ ! -d "$HOME/dotfiles" ] && git clone --bare https://github.com/Xaqiri/dotfiles.git $HOME/dotfiles
+echo "Cloning config files..."
+[ ! -d "$HOME/dotfiles" ] && git clone -b linux https://github.com/Xaqiri/dotfiles $HOME/dotfiles
+if [ ! -f "$HOME/.zshrc" ]
+then cp "$HOME/dotfiles/.zshrc" $HOME
+else
+	echo "Found .zshrc, backing up..."
+	cp "$HOME/.zshrc" "$HOME/.zshrc_bak"
+	cp "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
+fi
+
+if [ ! -d "$HOME/.config" ] 
+then cp -r "$HOME/dotfiles/.config" "$HOME/.config"
+else
+	echo "Found .config, backing up..."
+	cp -r "$HOME/.config" "$HOME/.config_bak"
+	cp -r "$HOME/dotfiles/.config" "$HOME/.config"
+fi
+
+[ -d "$HOME/dotfiles" ] && rm -rf "$HOME/dotfiles"
 
 # Installing Fonts
 git clone https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font

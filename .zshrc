@@ -23,6 +23,7 @@
 source $HOME/.config/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 alias ls="ls -a --color"
+alias rm="rm -rf"
 alias lg="lazygit"
 alias zshconfig="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
@@ -30,7 +31,6 @@ alias szsh="source ~/.zshrc"
 eval "$(starship init zsh)"
 
 export PATH="$HOME/neovim/bin:$PATH"
-export PATH="$HOME/.local/kitty.app/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR="$(which nvim)"
 export XDG_CONFIG_HOME="$HOME/.config"
