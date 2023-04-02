@@ -2,7 +2,8 @@
 sudo apt upgrade && sudo apt update
 
 // Install some dependencies
-sudo apt-get install ninja-build gettext libtool-bin cmake g++ pkg-config unzip curl
+sudo apt-get install ninja-build gettext libtool-bin cmake g++ pkg-config unzip curl python3-pip
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 // Install kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
@@ -27,6 +28,9 @@ make install
 export PATH="$HOME/neovim/bin:$PATH"
 cd ..
 rm -rvf neovim
+
+// Install lunarvim
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 
 // Install zsh 
 sudo apt install zsh
@@ -74,8 +78,12 @@ fi
 [ -d "$HOME/dotfiles" ] && rm -rf "$HOME/dotfiles"
 
 # Installing Fonts
+[ ! -d "$HOME/.local/share/fonts" ] && mkdir -p ~/.local/share/fonts
 git clone https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font
-mv /tmp/SFMono_Nerd_Font/* $HOME/Library/Fonts
+mv /tmp/SFMono_Nerd_Font/*.otf $HOME/.local/share/fonts
 rm -rf /tmp/SFMono_Nerd_Font/
+curl -Lo jetbrainsmono.zip "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip"
+unzip jetbrainsmono.zip -d $HOME/.local/share/fonts
+rm -rf jetbrainsmono.zip
 
 source $HOME/.zshrc
