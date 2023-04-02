@@ -32,5 +32,6 @@ eval "$(starship init zsh)"
 
 export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 export EDITOR="$(which nvim)"
 export XDG_CONFIG_HOME="$HOME/.config"
