@@ -1,6 +1,5 @@
 Terminal: 
   Kitty
-  Alacritty
 
 Shell: 
   zsh
@@ -10,12 +9,5 @@ Editor:
   NeoVim
   Micro
 
-Window Manager:
-  yabai
-
-Keybindings: 
-  skhdrc
-
 Misc:
   lazygit
-  sketchybar

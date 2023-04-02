@@ -3188,12 +3188,12 @@ function zvm_init() {
   zvm_bindkey vicmd '^X' zvm_switch_keyword
 
   # Rebindings
-  zvm_bindkey vicmd 'j' backward-char
-  zvm_bindkey vicmd 'k' down-line-or-history
-  zvm_bindkey vicmd 'l' up-line-or-history
-  zvm_bindkey vicmd 'ö' forward-char
+  zvm_bindkey vicmd 'h' backward-char
+  zvm_bindkey vicmd 'j' down-line-or-history
+  zvm_bindkey vicmd 'k' up-line-or-history
+  zvm_bindkey vicmd 'l' forward-char
   zvm_bindkey vicmd '0' beginning-of-line
-  zvm_bindkey vicmd 'ß' end-of-line
+  zvm_bindkey vicmd '$' end-of-line
 
 
   # Keybindings for escape key and some specials
