@@ -67,7 +67,7 @@ then cp "$HOME/dotfiles/.zshrc" $HOME
 else
 	echo "Found .zshrc, backing up..."
 	cp "$HOME/.zshrc" "$HOME/.zshrc_bak"
-	cp "$HOME/dotfiles/.zshrc" "$HOME/.zshrc"
+	cp "$HOME/dotfiles/.config/.zshrc" "$HOME/.zshrc"
 fi
 
 if [ ! -d "$HOME/.config" ] 
