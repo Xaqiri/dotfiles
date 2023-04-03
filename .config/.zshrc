@@ -36,7 +36,7 @@ alias rm="rm -rf"
 alias lg="lazygit"
 alias zshconfig="lvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
-
+alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 eval "$(starship init zsh)"
 
 # Sketchybar interactivity overloads

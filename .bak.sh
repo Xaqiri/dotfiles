@@ -3,13 +3,75 @@
 echo "Enter path to directory relative to home: "
 echo "(/bak will create $HOME/bak)"
 read bakPath
-mkdir $bakPath
+[ ! -d "$bakPath" ] && mkdir "$bakPath"
 
-[ -f "$HOME/.zshrc" ] && echo ".zshrc exists" && cp "$HOME/.zshrc" "$bakPath" || echo ".zshrc not found"
-[ -f "$HOME/.skhdrc" ] && echo ".skhdrc exists" && cp "$HOME/.skhdrc" "$bakPath" || echo ".skhdrc not found"
-[ -d "$HOME/.config/kitty" ] && echo "Backing up kitty..." && mkdir "$bakPath/kitty" && cp -r "$HOME/.config/kitty" "$bakPath" || echo "kitty config not found" 
-[ -d "$HOME/.config/.zsh-vi-mode" ] && echo "Backing up zsh-vi-mode..." && mkdir "$bakPath/.zsh-vi-mode" && cp -r "$HOME/.config/.zsh-vi-mode" "$bakPath" || echo "zsh-vi-mode config not found" 
-[ -d "$HOME/.config/lvim" ] && echo "Backing up lvim..." && mkdir "$bakPath/lvim" && cp -r "$HOME/.config/lvim" "$bakPath" || echo "lvim config not found" 
-[ -d "$HOME/.config/yabai" ] && echo "Backing up yabai..." && mkdir "$bakPath/yabai" && cp -r "$HOME/.config/yabai" "$bakPath" || echo "yaba config not found" 
-[ -d "$HOME/.config/sketchybar" ] && echo "Backing up sketchybar..." && mkdir "$bakPath/sketchybar" && cp -r "$HOME/.config/sketchybar" "$bakPath" || echo "sketchybar config not found" 
+[ -f "$HOME/.zshrc" ] && \
+  echo "Backing up .zshrc..." && \
+  cp "$HOME/.zshrc" "$bakPath" || \
+  echo ".zshrc not found"
 
+[ -f "$HOME/.skhdrc" ] && \
+  echo "Backing up .skhdrc..." && \
+  cp "$HOME/.skhdrc" "$bakPath" || \
+  echo ".skhdrc not found"
+
+
+if [ -d "$HOME/.config/kitty" ] 
+then
+  echo "Backing up kitty..." 
+  if [ ! -d "$bakPath/kitty" ] 
+  then
+    mkdir "$bakPath/kitty"
+  fi
+  cp -r "$HOME/.config/kitty" "$bakPath"
+else
+  echo "kitty config not found" 
+fi
+
+if [ -d "$HOME/.config/.zsh-vi-mode" ]
+then
+  echo "Backing up zsh-vi-mode..."
+  if [ ! -d "$bakPath/.zsh-vi-mode" ] 
+  then
+    mkdir "$bakPath/.zsh-vi-mode"
+  fi
+  cp -r "$HOME/.config/.zsh-vi-mode" "$bakPath"
+else
+  echo "zsh-vi-mode config not found" 
+fi
+
+if [ -d "$HOME/.config/lvim" ] 
+then
+  echo "Backing up lvim..." 
+  if [ ! -d "$bakPath/lvim" ] 
+  then
+    mkdir "$bakPath/lvim" 
+  fi
+  cp -r "$HOME/.config/lvim" "$bakPath" 
+else
+  echo "lvim config not found" 
+fi
+
+if [ -d "$HOME/.config/yabai" ] 
+then
+  echo "Backing up yabai..." 
+  if [ ! -d "$bakPath/yabai" ] 
+  then
+    mkdir "$bakPath/yabai" 
+  fi
+  cp -r "$HOME/.config/yabai" "$bakPath" 
+else
+  echo "yaba config not found" 
+fi
+
+if [ -d "$HOME/.config/sketchybar" ] 
+then
+  echo "Backing up sketchybar..." 
+  if [ ! -d "$bakPath/sketchybar" ] 
+  then
+    mkdir "$bakPath/sketchybar" 
+  fi
+  cp -r "$HOME/.config/sketchybar" "$bakPath" 
+else
+  echo "sketchybar config not found" 
+fi
