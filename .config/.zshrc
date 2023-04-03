@@ -31,14 +31,13 @@ source $HOME/.config/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 [ -d "/opt/homebrew/share/zsh-autosuggestions/" ] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
                                                   || source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-alias ls="ls -a"
+alias ls="ls -a --color"
+alias rm="rm -rf"
 alias lg="lazygit"
 alias zshconfig="lvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 
 eval "$(starship init zsh)"
-
-alias ssh="TERM=xterm-256color ssh"
 
 # Sketchybar interactivity overloads
 function brew() {
@@ -71,12 +70,12 @@ function suyabai () {
   fi
 }
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-export PATH="/Users/xaqiri/.local/bin:$PATH"
-export PATH="/Users/xaqiri/go/bin:$PATH"
-export PATH="/Users/xaqiri/.config/emacs/bin:$PATH"
-export PATH="/Users/xaqiri/.emacs.d/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/miniforge3/bin:/usr/local/anaconda3/bin:$PATH"
 export NNN_TMPFILE="$HOME/.config/nnn/.lastd"
 export EDITOR="$(which lvim)"
-export VISUAL="$HOME/.config/nnn/plugins/selnew.sh"
+export VISUAL="$(which lvim)"
 export XDG_CONFIG_HOME="$HOME/.config"

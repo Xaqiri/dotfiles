@@ -51,15 +51,46 @@ brew install --cask monitorcontrol
 # Install Mac Store apps
 mas install 497799835 #xCode
 
-# Copying config files
-[ ! -d "$HOME/dotfiles" ] && git clone --bare https://github.com/Xaqiri/dotfiles.git $HOME/dotfiles
-git --git-dir=$HOME/dotfiles/ --work-tree=$HOME checkout master
+#Install lunarvim
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+
+# Downloading config files
+echo "Cloning config files..."
+[ ! -d "$HOME/dotfiles" ] && git clone -b main https://github.com/Xaqiri/dotfiles $HOME/dotfiles
+
+if [ ! -f "$HOME/.zshrc" ]
+then cp "$HOME/dotfiles/.zshrc" $HOME
+else
+	echo "Found .zshrc, backing up..."
+	cp "$HOME/.zshrc" "$HOME/.zshrc_bak"
+	cp "$HOME/dotfiles/.config/.zshrc" "$HOME/.zshrc"
+fi
+
+if [ ! -f "$HOME/.skhdrc" ]
+then cp "$HOME/dotfiles/.skhdrc" $HOME
+else
+	echo "Found .skhdrc, backing up..."
+	cp "$HOME/.skhdrc" "$HOME/.skhdrc_bak"
+	cp "$HOME/dotfiles/.config/.skhdrc" "$HOME/.skhdrc"
+fi
+
+if [ ! -d "$HOME/.config" ] 
+then cp -r "$HOME/dotfiles/.config" "$HOME"
+else
+	echo "Found .config, backing up..."
+	cp -r "$HOME/.config" "$HOME/.config_bak"
+	cp -r "$HOME/dotfiles/.config" "$HOME"
+fi
+
+[ -d "$HOME/dotfiles" ] && rm -rf "$HOME/dotfiles"
+
 
 # Installing Fonts
 git clone https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font
 mv /tmp/SFMono_Nerd_Font/* $HOME/Library/Fonts
 rm -rf /tmp/SFMono_Nerd_Font/
 
+# Installing sketchybar
 curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.4/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
 
 source $HOME/.zshrc
