@@ -1,11 +1,12 @@
-// Update and upgrade 
+#!/bin/bash
+#Update and upgrade 
 sudo apt upgrade && sudo apt update
 
-// Install some dependencies
+#Install some dependencies
 sudo apt-get install ninja-build gettext libtool-bin cmake g++ pkg-config unzip curl python3-pip
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-// Install kitty
+#Install kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 # Create symbolic links to add kitty and kitten to PATH (assuming ~/.local/bin is in
 # your system-wide PATH)
@@ -18,8 +19,9 @@ cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/appli
 sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
 sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
 
-// Install neovim from source
-cd $HOME
+#Install neovim from source
+if [ ! -d "$HOME/neovim"]
+then cd $HOME
 git clone https://github.com/neovim/neovim neovimsrc
 cd neovimsrc
 rm -r build/  # clear the CMake cache
@@ -27,28 +29,20 @@ make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
 make install
 export PATH="$HOME/neovim/bin:$PATH"
 cd ..
-rm -rvf neovim
+rm -rvf neovimsrc
+fi
 
-// Install lunarvim
+#Install lunarvim
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 
-// Install zsh 
-sudo apt install zsh
-sudo apt install zsh-autosuggestions
-sudo apt install zsh-syntax-highlighting
-
-// Install starship
-curl -sS https://starship.rs/install.sh | sh
-// eval "$(starship init zsh)"
-
-// Install Go
+#Install Go
 cd $HOME
 wget "https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text').linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf go*.linux-amd64.tar.gz
 rm -rvf go*.linux-amd64.tar.gz
 
-// Install lazygit
+#Install lazygit
 LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
@@ -56,7 +50,15 @@ sudo install lazygit /usr/local/bin
 rm lazygit
 rm lazygit.tar.gz
 
-// Downloading config files
+#Install zsh 
+sudo apt install zsh
+sudo apt install zsh-autosuggestions
+sudo apt install zsh-syntax-highlighting
+
+#Install starship
+curl -sS https://starship.rs/install.sh | sh
+
+# Downloading config files
 echo "Cloning config files..."
 [ ! -d "$HOME/dotfiles" ] && git clone -b linux https://github.com/Xaqiri/dotfiles $HOME/dotfiles
 if [ ! -f "$HOME/.zshrc" ]
@@ -68,11 +70,11 @@ else
 fi
 
 if [ ! -d "$HOME/.config" ] 
-then cp -r "$HOME/dotfiles/.config" "$HOME/.config"
+then cp -r "$HOME/dotfiles/.config" "$HOME"
 else
 	echo "Found .config, backing up..."
 	cp -r "$HOME/.config" "$HOME/.config_bak"
-	cp -r "$HOME/dotfiles/.config" "$HOME/.config"
+	cp -r "$HOME/dotfiles/.config" "$HOME"
 fi
 
 [ -d "$HOME/dotfiles" ] && rm -rf "$HOME/dotfiles"
@@ -86,4 +88,5 @@ curl -Lo jetbrainsmono.zip "https://github.com/ryanoasis/nerd-fonts/releases/dow
 unzip jetbrainsmono.zip -d $HOME/.local/share/fonts
 rm -rf jetbrainsmono.zip
 
+zsh
 source $HOME/.zshrc
