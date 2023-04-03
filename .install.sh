@@ -1,4 +1,5 @@
 #!/bin/bash
+
 #Update and upgrade 
 sudo apt upgrade && sudo apt update
 
@@ -90,3 +91,4 @@ rm -rf jetbrainsmono.zip
 
 zsh
 source $HOME/.zshrc
+chsh -s /usr/bin/zsh
