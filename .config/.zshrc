@@ -41,6 +41,7 @@ alias fonts="kitty +list-fonts"
 alias themes="kitty +kitten themes"
 alias kittyconfig="lvim ~/.config/kitty/kitty.conf"
 alias lvimconfig="lvim ~/.config/lvim/config.lua"
+alias guni="goUnicode"
 eval "$(starship init zsh)"
 
 # Sketchybar interactivity overloads
