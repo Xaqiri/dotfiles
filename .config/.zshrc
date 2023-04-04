@@ -37,6 +37,10 @@ alias lg="lazygit"
 alias zshconfig="lvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
+alias fonts="kitty +list-fonts"
+alias themes="kitty +kitten themes"
+alias kittyconfig="lvim ~/.config/kitty/kitty.conf"
+alias lvimconfig="lvim ~/.config/lvim/config.lua"
 eval "$(starship init zsh)"
 
 # Sketchybar interactivity overloads

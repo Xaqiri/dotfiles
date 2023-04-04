@@ -44,7 +44,7 @@ brew install zsh-vi-mode
 
 # Brew Casks
 brew install --cask font-hack-nerd-font
-brew install --cask alacritty
+brew install --cask font-victor-mono-nerd-font
 brew install --cask kitty
 brew install --cask monitorcontrol
 

@@ -12,7 +12,12 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
-lvim.colorscheme = "catppuccin-frappe"
+-- lvim.colorscheme = "catppuccin-frappe"
+lvim.colorscheme = "decay"
+lvim.plugins = {
+  { "catppuccin/nvim",    name = "catppuccin" },
+  { "decaycs/decay.nvim", name = "decay" },
+}
 -- vim.opt.expandtab = true
 -- vim.opt.shifwidth = 2
 -- vim.opt.tabstop = 2
@@ -188,9 +193,7 @@ lvim.builtin.treesitter.highlight.enable = true
 --       cmd = "TroubleToggle",
 --     },
 -- }
-lvim.plugins = {
-  { "catppuccin/nvim", name = "catppuccin" },
-}
+
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 -- vim.api.nvim_create_autocmd("BufEnter", {
 --   pattern = { "*.json", "*.jsonc" },
