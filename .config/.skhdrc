@@ -26,6 +26,10 @@ shift + cmd - h : yabai -m window --warp west
 shift + cmd - j : yabai -m window --warp south
 shift + cmd - k : yabai -m window --warp north
 shift + cmd - l : yabai -m window --warp east
+shift + ctrl - h : yabai -m window --display west; yabai -m display --focus west
+shift + ctrl - j : yabai -m window --display south; yabai -m display --focus south
+shift + ctrl - k : yabai -m window --display north; yabai -m display --focus north
+shift + ctrl - l : yabai -m window --display east; yabai -m display --focus east
 
 # change region size up/right
 shift + alt - w : yabai -m window --resize top:0:-100

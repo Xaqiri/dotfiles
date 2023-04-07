@@ -28,6 +28,18 @@ else
   echo "kitty config not found" 
 fi
 
+if [ -d "$HOME/.config/wezterm" ] 
+then
+  echo "Backing up wezterm..." 
+  if [ ! -d "$bakPath/wezterm" ] 
+  then
+    mkdir "$bakPath/wezterm"
+  fi
+  cp -r "$HOME/.config/wezterm" "$bakPath"
+else
+  echo "wezterm config not found" 
+fi
+
 if [ -d "$HOME/.config/.zsh-vi-mode" ]
 then
   echo "Backing up zsh-vi-mode..."

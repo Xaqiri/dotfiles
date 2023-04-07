@@ -12,12 +12,13 @@ an executable
 -- general
 lvim.log.level = "warn"
 lvim.format_on_save.enabled = true
--- lvim.colorscheme = "catppuccin-frappe"
-lvim.colorscheme = "decay"
 lvim.plugins = {
   { "catppuccin/nvim",    name = "catppuccin" },
   { "decaycs/decay.nvim", name = "decay" },
 }
+-- lvim.colorscheme = "catppuccin-frappe"
+lvim.colorscheme = "decayce"
+
 -- vim.opt.expandtab = true
 -- vim.opt.shifwidth = 2
 -- vim.opt.tabstop = 2
