@@ -1,0 +1,19 @@
+vim.opt.number = true
+vim.opt.mouse = "a"
+vim.opt.showmode = false
+vim.opt.showtabline = 2
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.relativenumber = true
+vim.opt.wrap = false
+vim.opt.termguicolors = true
+vim.opt.cursorline = true
+vim.opt.timeoutlen = 500
+vim.opt.ignorecase = true
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.netrw_banner = 0 
+vim.g.netrw_winsize = 40
+vim.g.netrw_liststyle = 3
+

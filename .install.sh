@@ -46,6 +46,7 @@ brew install zsh-vi-mode
 brew install --cask font-hack-nerd-font
 brew install --cask font-victor-mono-nerd-font
 brew install --cask kitty
+brew install --cask wezterm
 brew install --cask monitorcontrol
 
 # Install Mac Store apps

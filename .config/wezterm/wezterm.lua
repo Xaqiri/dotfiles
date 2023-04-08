@@ -1,5 +1,5 @@
 local wezterm = require 'wezterm'
-local lightdecay = require './colors/lightdecay'
+-- local lightdecay = require './colors/lightdecay'
 local decay = require './colors/decayce'
 local config = {}
 
@@ -8,8 +8,8 @@ if wezterm.config_builder then
 end
 
 config = decay
-config.font = wezterm.font('Victor Mono')
-config.font_size = 14
+config.font = wezterm.font('Victor Mono') --, { weight = "Regular" })
+config.font_size = 16
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.window_padding = {

@@ -17,6 +17,7 @@ lvim.plugins = {
   { "decaycs/decay.nvim", name = "decay" },
 }
 -- lvim.colorscheme = "catppuccin-frappe"
+-- vim.api.nvim_set_hl(0, 'Comment', { italic = true })
 lvim.colorscheme = "decayce"
 
 -- vim.opt.expandtab = true

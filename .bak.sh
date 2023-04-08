@@ -64,6 +64,18 @@ else
   echo "lvim config not found" 
 fi
 
+if [ -d "$HOME/.config/nvim" ] 
+then
+  echo "Backing up neovim..." 
+  if [ ! -d "$bakPath/nvim" ] 
+  then
+    mkdir "$bakPath/nvim" 
+  fi
+  cp -r "$HOME/.config/nvim" "$bakPath" 
+else
+  echo "nvim config not found" 
+fi
+
 if [ -d "$HOME/.config/yabai" ] 
 then
   echo "Backing up yabai..." 
