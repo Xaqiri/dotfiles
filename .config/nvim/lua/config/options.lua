@@ -30,3 +30,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 40
 vim.g.netrw_liststyle = 3
+
+-- colorscheme = 'tokyonight'
+--vim.cmd([[colorscheme tokyonight]])

@@ -43,6 +43,9 @@ alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
 alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
 alias lvimconfig="nvim ~/.config/lvim/config.lua"
 alias guni="goUnicode"
+alias notes="nvim ~/notes"
+alias config="nvim ~/.config"
+alias nvimconfig="nvim ~/.config/nvim"
 eval "$(starship init zsh)"
 
 # Sketchybar interactivity overloads

@@ -1,8 +1,11 @@
 # Prevent default Mac behavior of hiding active window
 cmd - h : skhd -k ""
-# open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
-
+# open wezterm
+# cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm-gui --single-instance -d ~
+cmd - return : open -na WezTerm
+# open kitty
+# /Applications/kitty.app/Contents/MacOS/kitty --single-instance -d ~
+cmd + shift - return : open -na kitty
 # close focused window
 alt - w : yabai -m window --close
 

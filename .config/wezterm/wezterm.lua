@@ -1,14 +1,21 @@
 local wezterm = require 'wezterm'
 -- local lightdecay = require './colors/lightdecay'
-local decay = require './colors/decayce'
+-- local decay = require './colors/decayce'
+-- local catppuccin = require './colors/catppuccin' 
 local config = {}
 
 if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
-config = decay
-config.font = wezterm.font('Victor Mono') --, { weight = "Regular" })
+-- config.color_scheme = 'Tomorrow Night Blue (Gogh)'
+-- config.color_scheme = 'Tokyo Night Storm (Gogh)'
+-- config.color_scheme = 'tokyonight_night'
+-- config.color_scheme = 'Tokyo Night (Gogh)'
+config.color_scheme = 'tokyonight_moon'
+-- config.color_scheme = 'tokyonight_storm'
+
+config.font = wezterm.font('Victor Mono', { weight = "Medium" })
 config.font_size = 16
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"

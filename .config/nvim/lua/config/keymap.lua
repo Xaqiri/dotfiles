@@ -1,5 +1,5 @@
 local keymap = vim.keymap.set
-local telescope = require('telescope.builtin')
+--local telescope = require('telescope.builtin')
 vim.g.mapleader = " "
 
 -- Bind jk to get back into normal mode easier
@@ -7,7 +7,8 @@ keymap('i', 'jk', '<ESC>')
 -- Remove highlighting
 keymap('n', '<leader>sh', ':nohl<cr>')
 -- Toggle directory tree
-keymap('n', '<leader>e', ':NvimTreeToggle<cr>')
+-- keymap('n', '<leader>e', '<cmd>NeoTreeFloatToggle<cr>')
+keymap('n', '<leader>e', '<cmd>Neotree toggle<cr>')
 -- Open Lazy plugin manager
 keymap('n', '<leader>l', ':Lazy<cr>')
 -- Rebinding comment toggles
@@ -55,21 +56,23 @@ keymap('n', '<leader> l', ':Lazy<cr>')
 
 -- Telescope 
 -- Find file in current directory
-keymap('n', '<leader>ff', telescope.find_files, {})
+-- keymap('n', '<leader>ff', telescope.find_files, {})
 -- Find string in current directory
-keymap('n', '<leader>fg', telescope.live_grep, {})
+-- keymap('n', '<leader>fg', telescope.live_grep, {})
 -- List open buffers
-keymap('n', '<leader>fb', telescope.buffers, {})
+-- keymap('n', '<leader>fb', telescope.buffers, {})
 -- List help tags
-keymap('n', '<leader>fh', telescope.help_tags, {})
+-- keymap('n', '<leader>fh', telescope.help_tags, {})
 -- Search the current directory for the string under the cursor
-keymap('n', '<leader>fs', telescope.grep_string, {})
+-- keymap('n', '<leader>fs', telescope.grep_string, {})
 -- Look at available color schemes
-keymap('n', '<leader>fc', telescope.colorscheme, {})
+-- keymap('n', '<leader>fc', telescope.colorscheme, {})
 -- List keymaps
-keymap('n', '<leader>fk', telescope.keymaps, {})
+-- keymap('n', '<leader>fk', telescope.keymaps, {})
 -- Search lsp
-keymap('n', '<leader>fi', telescope.lsp_implementations, {})
-keymap('n', '<leader>fd', telescope.lsp_definitions, {})
-keymap('n', '<leader>ft', telescope.lsp_type_definitions, {})
-keymap('n', ']t', '<Plugin>(jump_next())')
+-- keymap('n', '<leader>fi', telescope.lsp_implementations, {})
+-- keymap('n', '<leader>fd', telescope.lsp_definitions, {})
+-- keymap('n', '<leader>ft', telescope.lsp_type_definitions, {})
+-- keymap('n', ']t', '<Plugin>(jump_next())')
+
+
