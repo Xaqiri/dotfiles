@@ -35,7 +35,8 @@ brew install gcc
 brew install micro
 brew install node
 brew install nnn 
-brew install starship
+# brew install starship
+brew install romkatv/gitstatus/gitstatus
 brew install sf-symbols
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting

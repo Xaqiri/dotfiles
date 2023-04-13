@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "Enter path to directory relative to home: "
-echo "(/bak will create $HOME/bak)"
+echo "Enter path to directory: "
+# echo "(/bak will create $HOME/bak)"
 read bakPath
 [ ! -d "$bakPath" ] && mkdir "$bakPath"
 

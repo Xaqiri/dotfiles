@@ -34,7 +34,7 @@ source $HOME/.config/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 alias ls="ls -a --color"
 alias rm="rm -rf"
 alias lg="lazygit"
-alias zshconfig="nvim ~/.zshrc"
+alias zshrc="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 alias fonts="kitty +list-fonts"
@@ -54,8 +54,7 @@ alias pull="git pull"
 alias clone="git clone"
 alias add="git add ."
 alias commit="git commit -m"
-eval "$(starship init zsh)"
-
+# eval "$(starship init zsh)"
 # Sketchybar interactivity overloads
 function brew() {
   command brew "$@" 
@@ -95,4 +94,11 @@ export PATH="$HOME/miniforge3/bin:/usr/local/anaconda3/bin:$PATH"
 export NNN_TMPFILE="$HOME/.config/nnn/.lastd"
 export EDITOR="$(which nvim)"
 export VISUAL="$(which nvim)"
-# export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+source /opt/homebrew/opt/gitstatus/gitstatus.prompt.zsh
+local topPrompt=$'%F{cyan}\U256d\U2500\U2524%f%~%F{cyan}\U251c\U2500\U2500\U2500%f $GITSTATUS_PROMPT' 
+local botPrompt=$'\n%F{cyan}\U2570\U2500\U2500%f'
+PROMPT=$topPrompt$botPrompt
+RPROMPT='%T'
+
