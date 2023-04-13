@@ -1,4 +1,5 @@
 local opt = vim.opt
+
 opt.mouse = "a"
 opt.showmode = false
 opt.showtabline = 2

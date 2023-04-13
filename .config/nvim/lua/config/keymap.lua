@@ -1,11 +1,14 @@
 local keymap = vim.keymap.set
---local telescope = require('telescope.builtin')
 vim.g.mapleader = " "
 
 -- Bind jk to get back into normal mode easier
 keymap('i', 'jk', '<ESC>')
 -- Remove highlighting
 keymap('n', '<leader>sh', ':nohl<cr>')
+-- Highlight all occurrances of string under cursor
+keymap('n', '<leader>hs', '#*')
+-- Replace all occurrances of string under cursor
+keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
 -- Toggle directory tree
 -- keymap('n', '<leader>e', '<cmd>NeoTreeFloatToggle<cr>')
 keymap('n', '<leader>e', '<cmd>Neotree toggle<cr>')
@@ -23,6 +26,8 @@ keymap('n', '<leader>j', '<C-w>j', {desc = 'Move to split above'})
 keymap('n', '<leader>k', '<C-w>k', {desc = 'Move to split below'})
 keymap('n', '<leader>h', '<C-w>h', {desc = 'Move to split left'})
 keymap('n', '<leader>l', '<C-w>l', {desc = 'Move to split right'})
+-- Make script executable
+keymap('n', '<leader>x', '<cmd>silent! !chmod +x %<cr>')
 -- Resize splits
 keymap('n', '<S-j>', ':resize +2<cr>')
 keymap('n', '<S-k>', ':resize -2<cr>')
@@ -56,23 +61,23 @@ keymap('n', '<leader> l', ':Lazy<cr>')
 
 -- Telescope 
 -- Find file in current directory
--- keymap('n', '<leader>ff', telescope.find_files, {})
+keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {})
 -- Find string in current directory
--- keymap('n', '<leader>fg', telescope.live_grep, {})
+keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {})
 -- List open buffers
--- keymap('n', '<leader>fb', telescope.buffers, {})
+keymap('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {})
 -- List help tags
--- keymap('n', '<leader>fh', telescope.help_tags, {})
+keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', {})
 -- Search the current directory for the string under the cursor
--- keymap('n', '<leader>fs', telescope.grep_string, {})
+keymap('n', '<leader>fs', '<cmd>Telescope grep_string<cr>', {})
 -- Look at available color schemes
--- keymap('n', '<leader>fc', telescope.colorscheme, {})
+keymap('n', '<leader>fc', '<cmd>Telescope colorscheme<cr>', {})
 -- List keymaps
--- keymap('n', '<leader>fk', telescope.keymaps, {})
+keymap('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', {})
 -- Search lsp
--- keymap('n', '<leader>fi', telescope.lsp_implementations, {})
--- keymap('n', '<leader>fd', telescope.lsp_definitions, {})
--- keymap('n', '<leader>ft', telescope.lsp_type_definitions, {})
--- keymap('n', ']t', '<Plugin>(jump_next())')
+keymap('n', '<leader>fi', '<cmd>Telescope lsp_implementations<cr>', {})
+keymap('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {})
+-- keymap('n', 'gd', '<cmd>Telescope lsp_type_definitions<cr>', {})
+keymap('n', ']t', '<Plugin>(jump_next())')
 
 
