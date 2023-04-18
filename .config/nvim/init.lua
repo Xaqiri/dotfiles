@@ -26,3 +26,7 @@ end)
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.setup()
+
+-- Command to saving, converting, and opening markdown files
+vim.api.nvim_create_user_command('MD', 'w | silent !markdown % > %:r.html | open %:r.html -a Safari', {})
+

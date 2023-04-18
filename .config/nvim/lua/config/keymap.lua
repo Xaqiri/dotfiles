@@ -1,7 +1,9 @@
 local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
--- Bind jk to get back into normal mode easier
+-- Command to saving, converting, and opening markdown files
+-- vim.api.nvim_add_user_command('MD', 'echo hello')
+
 keymap('i', 'jk', '<ESC>')
 -- Remove highlighting
 keymap('n', '<leader>sh', ':nohl<cr>')
