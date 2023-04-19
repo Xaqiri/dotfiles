@@ -7,40 +7,64 @@ sudo apt upgrade && sudo apt update
 sudo apt-get install ninja-build gettext libtool-bin cmake g++ pkg-config unzip curl python3-pip
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+#Misc things
+sudo apt install neofetch fzf node tree 
+
+#Install git status for zsh prompt
+cd $HOME
+git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/gitstatus
+echo 'source ~/gitstatus/gitstatus.prompt.zsh' >>! ~/.zshrc
+
 #Install kitty
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+# curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 # Create symbolic links to add kitty and kitten to PATH (assuming ~/.local/bin is in
 # your system-wide PATH)
-ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
+# ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
 # Place the kitty.desktop file somewhere it can be found by the OS
-cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+# cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
 # If you want to open text files and images in kitty via your file manager also add the kitty-open.desktop file
-cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+# cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
 # Update the paths to the kitty and its icon in the kitty.desktop file(s)
-sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
-sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+# sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+# sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
 
 #Install neovim from source
-if [ ! -d "$HOME/neovim"]
-then cd $HOME
-git clone https://github.com/neovim/neovim neovimsrc
-cd neovimsrc
-rm -r build/  # clear the CMake cache
-make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-make install
-export PATH="$HOME/neovim/bin:$PATH"
-cd ..
-rm -rvf neovimsrc
-fi
+# if [ ! -d "$HOME/neovim"]
+# then cd $HOME
+# git clone https://github.com/neovim/neovim neovimsrc
+# cd neovimsrc
+# rm -r build/  # clear the CMake cache
+# make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+# make install
+# export PATH="$HOME/neovim/bin:$PATH"
+# cd ..
+# rm -rvf neovimsrc
+# fi
 
-#Install lunarvim
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+#Install wezterm
+curl -LO https://github.com/wez/wezterm/releases/download/20230408-112425-69ae8472/wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
+sudo apt install -y ./wezterm-20230408-112425-69ae8472.Ubuntu22.04.deb
+
+#Install neovim using apt-get
+cd $HOME
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install neovim
+sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+sudo update-alternatives --config vi
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --config vim
+sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+sudo update-alternatives --config editor
 
 #Install Go
 cd $HOME
 wget "https://go.dev/dl/$(curl 'https://go.dev/VERSION?m=text').linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf go*.linux-amd64.tar.gz
+# Downloading config files
 rm -rvf go*.linux-amd64.tar.gz
 
 #Install lazygit
@@ -56,10 +80,6 @@ sudo apt install zsh
 sudo apt install zsh-autosuggestions
 sudo apt install zsh-syntax-highlighting
 
-#Install starship
-curl -sS https://starship.rs/install.sh | sh
-
-# Downloading config files
 echo "Cloning config files..."
 [ ! -d "$HOME/dotfiles" ] && git clone -b linux https://github.com/Xaqiri/dotfiles $HOME/dotfiles
 if [ ! -f "$HOME/.zshrc" ]
@@ -88,7 +108,15 @@ rm -rf /tmp/SFMono_Nerd_Font/
 curl -Lo jetbrainsmono.zip "https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/JetBrainsMono.zip"
 unzip jetbrainsmono.zip -d $HOME/.local/share/fonts
 rm -rf jetbrainsmono.zip
+curl -Lo $HOME/Downloads/victor.zip https://rubjo.github.io/victor-mono/VictorMonoAll.zip
+unzip $HOME/Downloads/victor.zip -d $HOME/.local/share/fonts
+rm -rf $HOME/Downloads/victor.zip
+sudo fc-cache 
 
 zsh
+chmod +x $HOME/.xinputrc
+$HOME/.xinputrc
 source $HOME/.zshrc
 chsh -s /usr/bin/zsh
+
+echo 'Now just log out and log into awesomewm'
