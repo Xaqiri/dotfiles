@@ -35,7 +35,7 @@ alias config="nvim ~/.config"
 alias envim="nvim ~/.config/nvim"
 alias ewezterm="nvim ~/.config/wezterm/wezterm.lua"
 alias zshrc="nvim ~/.zshrc"
-
+alias eawesome="nvim ~/.config/awesome/rc.lua"
 alias notes="nvim ~/notes"
 alias projects="cd ~/programming/projects"
 alias szsh="source ~/.zshrc"

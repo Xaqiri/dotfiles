@@ -1,7 +1,0 @@
--- vim.cmd.colorscheme('catppuccin-macchiato')
--- vim.cmd.colorscheme('dark-decay')
--- vim.cmd.colorscheme('iceberg')
--- vim.cmd.colorscheme('tokyonight')
--- vim.cmd.colorscheme('tokyonight-night')
--- vim.cmd.colorscheme('tokyonight-storm')
-vim.cmd.colorscheme('tokyonight-moon')
