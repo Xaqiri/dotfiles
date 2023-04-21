@@ -40,37 +40,37 @@ cmd - k : yabai -m window --focus north
 cmd - l : yabai -m window --focus east
 
 # desktop 
-ctrl - h : yabai -m space --focus prev
-ctrl - l : yabai -m space --focus next
+alt - h : yabai -m space --focus prev || yabai -m space --focus last
+alt - l : yabai -m space --focus next || yabai -m space --focus first
 
 # display
-alt - h: yabai -m display --focus west
-alt - j : yabai -m display --focus south 
-alt - k : yabai -m display --focus north
-alt - l : yabai -m display --focus east
+ctrl - h: yabai -m display --focus west
+ctrl - j : yabai -m display --focus south 
+ctrl - k : yabai -m display --focus north
+ctrl - l : yabai -m display --focus east
 
 # MOVE
 # swap window
-cmd + shift - h : yabai -m window --swap west
-cmd + shift - j : yabai -m window --swap south
-cmd + shift - k : yabai -m window --swap north
-cmd + shift - l : yabai -m window --swap east
+cmd + fn - h : yabai -m window --swap west
+cmd + fn - j : yabai -m window --swap south
+cmd + fn - k : yabai -m window --swap north
+cmd + fn - l : yabai -m window --swap east
 
 # warp window
-# shift + cmd - h : yabai -m window --warp west
-# shift + cmd - j : yabai -m window --warp south
-# shift + cmd - k : yabai -m window --warp north
-# shift + cmd - l : yabai -m window --warp east
+cmd + fn - s : yabai -m window --warp west
+cmd + fn - f : yabai -m window --warp south
+cmd + fn - d : yabai -m window --warp north
+cmd + fn - g : yabai -m window --warp east
 
 # move window between desktops
-cmd + ctrl - h : yabai -m window --space prev; yabai -m space --focus prev 
-cmd + ctrl - l : yabai -m window --space next; yabai -m space --focus next 
+alt + fn - h : yabai -m window --space prev; yabai -m space --focus prev 
+alt + fn - l : yabai -m window --space next; yabai -m space --focus next 
 
 # move window between displays
-cmd + fn - h : yabai -m window --display west; yabai -m display --focus west
-cmd + fn - j : yabai -m window --display south; yabai -m display --focus south
-cmd + fn - k : yabai -m window --display north; yabai -m display --focus north
-cmd + fn - l : yabai -m window --display east; yabai -m display --focus east
+ctrl + fn - h : yabai -m window --display west; yabai -m display --focus west
+ctrl + fn - j : yabai -m window --display south; yabai -m display --focus south
+ctrl + fn - k : yabai -m window --display north; yabai -m display --focus north
+ctrl + fn - l : yabai -m window --display east; yabai -m display --focus east
 
 # change region size up/right
 fn - k : yabai -m window --resize top:0:-100
@@ -83,6 +83,14 @@ fn - d : yabai -m window --resize bottom:0:-100
 fn - s : yabai -m window --resize left:-100:0
 fn - f : yabai -m window --resize bottom:0:100
 fn - g : yabai -m window --resize left:100:0
+
+# create desktop 
+cmd + shift - n : yabai -m space --create && \
+                index="$(yabai -m query --spaces --display | jq last.index)" && \
+                yabai -m space --focus "${index}"
+
+# destroy desktop
+cmd + shift - q : yabai -m space --destroy && yabai -m space --focus last
 
 # rotate tree
 alt - r : yabai -m space --rotate 270
