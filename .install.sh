@@ -35,6 +35,7 @@ brew install gcc
 brew install micro
 brew install node
 brew install nnn 
+brew install pandoc
 # brew install starship
 brew install romkatv/gitstatus/gitstatus
 brew install sf-symbols

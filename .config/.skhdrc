@@ -5,32 +5,7 @@
 # cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm-gui --single-instance -d ~
 cmd - return : open -na WezTerm
 # close focused window
-cmd - q : yabai -m window --close; yabai -m window --focus prev
-
-# Vim mode
-# :: vim : yabai -m config active_window_border_color 0xff00ff00
-# :: default : yabai -m config active_window_border_color 0xff0398fc
-# default < fn - f ; vim
-# vim < fn - f ; default
-
-# Use hjkl as arrow keys in vim mode
-# vim < h : skhd -k "left"
-# vim < j : skhd -k "down" 
-# vim < k : skhd -k "up"
-# vim < l : skhd -k "right"
-# vim < u : skhd -k 'cmd - 0x7E'
-# vim < d : skhd -k 'cmd - 0x7D'
-
-# Move windows between spaces
-# vim < cmd - n : yabai -m space --create
-# vim < cmd - d : yabai -m space --destroy
-# vim < shift + cmd - h : yabai -m window --space prev; yabai -m space --focus prev 
-# vim < shift + cmd - l : yabai -m window --space next; yabai -m space --focus next 
-
-# Move between spaces
-# vim < cmd - h : yabai -m space --focus prev
-# vim < cmd - l : yabai -m space --focus next
-# vim < shift + cmd - j : yabai -m window --space 3
+cmd - q : yabai -m window --close; yabai -m window --focus last
 
 # CHANGE FOCUS
 # window
@@ -40,8 +15,12 @@ cmd - k : yabai -m window --focus north
 cmd - l : yabai -m window --focus east
 
 # desktop 
-alt - h : yabai -m space --focus prev || yabai -m space --focus last
-alt - l : yabai -m space --focus next || yabai -m space --focus first
+# alt - h : yabai -m space --focus prev || yabai -m space --focus last
+# alt - l : yabai -m space --focus next || yabai -m space --focus first
+# cycle forwards on the focused display
+alt - l : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
+# cycle backwards on the focused display
+alt - h : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
 
 # display
 ctrl - h: yabai -m display --focus west

@@ -29,4 +29,5 @@ lsp.setup()
 
 -- Command to saving, converting, and opening markdown files
 vim.api.nvim_create_user_command('MD', 'w | silent !markdown % > %:r.html | open %:r.html -a Safari', {})
-
+vim.api.nvim_create_user_command('HTML', 'w | silent !pandoc -s % -o %:r.html | open %:r.html -a Safari', {})
+vim.api.nvim_create_user_command('HTMLtoc', 'w | silent !pandoc -s --toc % -o %:r.html | open %:r.html -a Safari', {})

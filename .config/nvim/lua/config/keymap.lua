@@ -10,7 +10,7 @@ keymap('n', '<leader>sh', ':nohl<cr>')
 -- Highlight all occurrances of string under cursor
 keymap('n', '<leader>hs', '#*')
 -- Replace all occurrances of string under cursor
-keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>')
+keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', {desc = 'Replace all occurrances of string under cursor'})
 -- Toggle directory tree
 -- keymap('n', '<leader>e', '<cmd>NeoTreeFloatToggle<cr>')
 keymap('n', '<leader>e', '<cmd>Neotree toggle<cr>')
@@ -23,18 +23,23 @@ keymap('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)gv', {desc = 'Co
 keymap('n', '<leader>ss', ':split<cr>')
 keymap('n', '<leader>sv', ':vsplit<cr>')
 keymap('n', '<leader>sx', ':close<cr>')
+-- Surround words
+-- keymap('n', '<leader>s[', 'viwc[<esc>pa]<esc>')
+-- keymap('v', '<leader>s[', 'iwc[<esc>pa]')
+-- keymap('x', '<leader>s[', 'iwc[<esc>p')
+
 -- Move between splits
 keymap('n', '<leader>j', '<C-w>j', {desc = 'Move to split above'})
 keymap('n', '<leader>k', '<C-w>k', {desc = 'Move to split below'})
 keymap('n', '<leader>h', '<C-w>h', {desc = 'Move to split left'})
 keymap('n', '<leader>l', '<C-w>l', {desc = 'Move to split right'})
 -- Make script executable
-keymap('n', '<leader>x', '<cmd>silent! !chmod +x %<cr>')
+keymap('n', '<leader>x', '<cmd>silent! !chmod +x %<cr>', {desc = 'Make shell script executable'})
 -- Resize splits
-keymap('n', '<S-j>', ':resize +2<cr>')
-keymap('n', '<S-k>', ':resize -2<cr>')
-keymap('n', '<S-h>', ':vertical resize -2<cr>')
-keymap('n', '<S-l>', ':vertical resize +2<cr>')
+keymap('n', '<S-j>', ':resize +2<cr>', {desc = 'Adjust split height'})
+keymap('n', '<S-k>', ':resize -2<cr>', {desc = 'Adjust split height'})
+keymap('n', '<S-h>', ':vertical resize -2<cr>', {desc = 'Adjust split width'})
+keymap('n', '<S-l>', ':vertical resize +2<cr>', {desc = 'Adjust split width'})
 keymap('n', '<leader>=', '<C-w>=', {desc = 'Equalize split sizes'})
 -- Better indenting
 keymap('v', '<', '<gv')
