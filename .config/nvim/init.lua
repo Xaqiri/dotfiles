@@ -28,6 +28,8 @@ require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 lsp.setup()
 
 -- Command to saving, converting, and opening markdown files
-vim.api.nvim_create_user_command('MD', 'w | silent !markdown % > %:r.html | open %:r.html -a Safari', {})
-vim.api.nvim_create_user_command('HTML', 'w | silent !pandoc -s % -o %:r.html | open %:r.html -a Safari', {})
-vim.api.nvim_create_user_command('HTMLtoc', 'w | silent !pandoc -s --toc % -o %:r.html | open %:r.html -a Safari', {})
+-- vim.api.nvim_create_user_command('MD', 'w | silent !markdown % > %:r.html | open %:r.html -a Safari', {})
+vim.api.nvim_create_user_command('HTMLo', 'w | silent !pandoc -s % -o ~/notes/html/$(basename % .md).html --css ~/notes/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename % .md).html | open ~/notes/html/$(basename % .md).html -a Safari', {})
+vim.api.nvim_create_user_command('HTML', 'w | silent !pandoc -s % -o ~/notes/html/$(basename % .md).html --css ~/notes/style.css', {})
+vim.api.nvim_create_user_command('HTMLtoco', 'w | silent !pandoc -s --toc % -o ~/notes/html/$(basename % .md).html --css ~/notes/style.css | open ~/notes/html/%:r.html -a Safari', {})
+vim.api.nvim_create_user_command('HTMLtoc', 'w | silent !pandoc -s --toc % -o ~/notes/html/$(basename % .md).html --css ~/notes/style.css', {})

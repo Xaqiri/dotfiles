@@ -22,7 +22,9 @@ return {
       mappings = {
         ['/'] = 'noop',
         ['l'] = 'open',
+        ['<leader>l'] = 'set_root',
         ['h'] = 'close_node',
+        ['<leader>h'] = 'navigate_up',
       },
     },
   },

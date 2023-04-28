@@ -4,6 +4,10 @@
 # open wezterm
 # cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm-gui --single-instance -d ~
 cmd - return : open -na WezTerm
+
+# open a new Safari window 
+cmd - b : open -na Safari 
+
 # close focused window
 cmd - q : yabai -m window --close; yabai -m window --focus last
 
@@ -23,10 +27,10 @@ alt - l : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | revers
 alt - h : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
 
 # display
-ctrl - h: yabai -m display --focus west
-ctrl - j : yabai -m display --focus south 
-ctrl - k : yabai -m display --focus north
-ctrl - l : yabai -m display --focus east
+# ctrl - h: yabai -m display --focus west
+# ctrl - j : yabai -m display --focus south 
+# ctrl - k : yabai -m display --focus north
+# ctrl - l : yabai -m display --focus east
 
 # MOVE
 # swap window

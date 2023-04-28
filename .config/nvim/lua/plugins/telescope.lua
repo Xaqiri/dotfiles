@@ -4,6 +4,10 @@ return {
   cmd = "Telescope",
   version = false, -- telescope did only one release, so use HEAD for now
   opts = {
+    file_ignore_patterns = {
+      'node_modules',
+      '.git',
+    },
     pickers = {
       find_files = {
         -- theme = 'dropdown',

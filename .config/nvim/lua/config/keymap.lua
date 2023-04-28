@@ -1,21 +1,19 @@
 local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
--- Command to saving, converting, and opening markdown files
--- vim.api.nvim_add_user_command('MD', 'echo hello')
+-- Creates the file under the cursor in the current working directory 
+keymap('n', '<leader>mf', '<cmd>:e <cfile>:p<cr>')
 
+-- Use jk to leave insert mode 
 keymap('i', 'jk', '<ESC>')
 -- Remove highlighting
-keymap('n', '<leader>sh', ':nohl<cr>')
+keymap('n', '<leader>rh', ':nohl<cr>')
 -- Highlight all occurrances of string under cursor
-keymap('n', '<leader>hs', '#*')
+keymap('n', '<leader>sh', '#*')
 -- Replace all occurrances of string under cursor
 keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', {desc = 'Replace all occurrances of string under cursor'})
 -- Toggle directory tree
--- keymap('n', '<leader>e', '<cmd>NeoTreeFloatToggle<cr>')
-keymap('n', '<leader>e', '<cmd>Neotree toggle<cr>')
--- Open Lazy plugin manager
-keymap('n', '<leader>l', ':Lazy<cr>')
+keymap('n', '<leader>e', '<cmd>Neotree toggle reveal_force_cwd<cr>')
 -- Rebinding comment toggles
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', {desc = 'Comment current line'})
 keymap('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)gv', {desc = 'Comment block'})
@@ -23,6 +21,7 @@ keymap('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)gv', {desc = 'Co
 keymap('n', '<leader>ss', ':split<cr>')
 keymap('n', '<leader>sv', ':vsplit<cr>')
 keymap('n', '<leader>sx', ':close<cr>')
+
 -- Surround words
 -- keymap('n', '<leader>s[', 'viwc[<esc>pa]<esc>')
 -- keymap('v', '<leader>s[', 'iwc[<esc>pa]')
@@ -47,12 +46,12 @@ keymap('v', '>', '>gv')
 -- Better paste
 keymap('v', 'p', '"_dP')
 -- Move selected text up and down
-keymap('n', '<C-j>', '<Esc>:m .+1<cr>==')
-keymap('n', '<C-k>', '<Esc>:m .-2<cr>==')
-keymap('i', '<C-j>', '<Esc>:m .+1<cr>==gi')
-keymap('i', '<C-k>', '<Esc>:m .-2<cr>==gi')
-keymap('x', '<C-j>', ":move '>+1<cr>gv-gv")
-keymap('x', '<C-k>', ":move '<-2<cr>gv-gv")
+keymap('n', '<A-j>', '<Esc>:m .+1<cr>==')
+keymap('n', '<A-k>', '<Esc>:m .-2<cr>==')
+keymap('i', '<A-j>', '<Esc>:m .+1<cr>==gi')
+keymap('i', '<A-k>', '<Esc>:m .-2<cr>==gi')
+keymap('x', '<A-j>', ":move '>+1<cr>gv-gv")
+keymap('x', '<A-k>', ":move '<-2<cr>gv-gv")
 -- Copy and paste from clipboard
 keymap({'n', 'x'}, '<leader>y', '"+y')
 keymap({'n', 'x'}, '<leader>p', '"+p')
@@ -68,7 +67,7 @@ keymap('n', '<leader> l', ':Lazy<cr>')
 
 -- Telescope 
 -- Find file in current directory
-keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {})
+keymap('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<cr>', {})
 -- Find string in current directory
 keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {})
 -- List open buffers
@@ -86,5 +85,4 @@ keymap('n', '<leader>fi', '<cmd>Telescope lsp_implementations<cr>', {})
 keymap('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {})
 -- keymap('n', 'gd', '<cmd>Telescope lsp_type_definitions<cr>', {})
 keymap('n', ']t', '<Plugin>(jump_next())')
-
 
