@@ -46,7 +46,7 @@ alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
 alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
 alias lvimconfig="nvim ~/.config/lvim/config.lua"
 alias guni="goUnicode"
-alias notes="ff ~/notes"
+alias notes="nvim ~/notes"
 alias snotes="ff ~/notes"
 alias config="nvim ~/.config"
 alias nvimconfig="nvim ~/.config/nvim"
@@ -62,7 +62,7 @@ alias commit="git commit -m"
 function ff() {
   dir="$@"
   [ -z "${dir}" ] && curdir=$(pwd) || curdir="$@" 
-  selection=$(fd -L -t d --hidden --full-path "${curdir}" | fzf --height=50% \
+  selection=$(fd -L -t d --hidden . "${curdir}" | fzf --height=50% \
     --border=double \
     --margin=1%,5%,10%,1% \
     --layout=reverse \
@@ -70,10 +70,10 @@ function ff() {
     --info=inline \
     --preview="tree -C {}" \
     --color="fg+:cyan,bg+:-1,border:blue,label:magenta,fg:white,marker:blue,prompt:gray,pointer:blue,info:green" \
-    --bind="D:+reload(fd -L -t d --hidden --full-path ${curdir})" \
+    --bind="D:+reload(fd -L -t d --hidden . ${curdir})" \
     --bind="D:+change-preview(tree -C {})" \
     --bind="D:+refresh-preview" \
-    --bind="F:+reload(fd -L -t f --hidden --full-path ${curdir})" \
+    --bind="F:+reload(fd -L -t f --hidden . ${curdir})" \
     --bind="F:+change-preview(bat --color=always {})" \
     --bind="F:+refresh-preview" \
     --bind="X:delete-char" \
