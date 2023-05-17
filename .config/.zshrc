@@ -36,7 +36,8 @@ alias rm="rm -rf"
 alias lg="lazygit"
 alias zshrc="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
-alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
+# alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
+alias relyabai="yabai --stop-service; yabai --start-service"
 alias eyabai='nvim ~/.config/yabai/yabairc'
 alias eskhd='nvim ~/.skhdrc'
 alias fonts="kitty +list-fonts"
@@ -45,7 +46,8 @@ alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
 alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
 alias lvimconfig="nvim ~/.config/lvim/config.lua"
 alias guni="goUnicode"
-alias notes="nvim ~/notes"
+alias notes="ff ~/notes"
+alias snotes="ff ~/notes"
 alias config="nvim ~/.config"
 alias nvimconfig="nvim ~/.config/nvim"
 alias brewup="brew upgrade && brew update"
@@ -56,8 +58,59 @@ alias pull="git pull"
 alias clone="git clone"
 alias add="git add ."
 alias commit="git commit -m"
-# eval "$(starship init zsh)"
-# Sketchybar interactivity overloads
+
+function ff() {
+  dir="$@"
+  [ -z "${dir}" ] && curdir=$(pwd) || curdir="$@" 
+  selection=$(fd -L -t d --hidden --full-path "${curdir}" | fzf --height=50% \
+    --border=double \
+    --margin=1%,5%,10%,1% \
+    --layout=reverse \
+    --border-label="| ${curdir} |" \
+    --info=inline \
+    --preview="tree -C {}" \
+    --color="fg+:cyan,bg+:-1,border:blue,label:magenta,fg:white,marker:blue,prompt:gray,pointer:blue,info:green" \
+    --bind="D:+reload(fd -L -t d --hidden --full-path ${curdir})" \
+    --bind="D:+change-preview(tree -C {})" \
+    --bind="D:+refresh-preview" \
+    --bind="F:+reload(fd -L -t f --hidden --full-path ${curdir})" \
+    --bind="F:+change-preview(bat --color=always {})" \
+    --bind="F:+refresh-preview" \
+    --bind="X:delete-char" \
+    --bind="J:down" \
+    --bind="K:up" \
+    --bind="H:backward-char" \
+    --bind="L:forward-char" \
+    --bind="B:backward-word" \
+    --bind="W:forward-word" \
+  )
+      if [ -d "${selection}" ] && [ -n "${selection}" ]; then 
+        cd $selection 
+      elif [ -f "${selection}" ]; then
+        eval "$EDITOR $selection"
+      fi 
+  }
+
+function enotes() {
+  curdir=$(pwd)
+selection=$(fzf --height=100% \
+  --border=double \
+  --border-label="| $curdir |" \
+  --info=inline \
+  --preview='bat {} --color=always' \
+  --preview-window='75%,border-sharp,top' \
+  --color="fg+:cyan,\
+bg+:-1,\
+border:blue,\
+label:magenta,\
+fg:white,\
+marker:blue,\
+prompt:gray,\
+pointer:blue,\
+info:green") 
+  nvim $selection
+}
+
 function brew() {
   command brew "$@" 
 
@@ -97,6 +150,7 @@ export NNN_TMPFILE="$HOME/.config/nnn/.lastd"
 export EDITOR="$(which nvim)"
 export VISUAL="$(which nvim)"
 export XDG_CONFIG_HOME="$HOME/.config"
+# export FZF_DEFAULT_COMMAND="fd . --hidden --exclude '.git'"
 
 source /opt/homebrew/opt/gitstatus/gitstatus.prompt.zsh
 local topPrompt=$'%F{cyan}\U256d\U2500\U2524%f%~%F{cyan}\U251c\U2500\U2500\U2500%f $GITSTATUS_PROMPT' 
@@ -104,3 +158,7 @@ local botPrompt=$'\n%F{cyan}\U2570\U2500\U2500%f'
 PROMPT=$topPrompt$botPrompt
 RPROMPT='%T'
 
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)

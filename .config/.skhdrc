@@ -9,7 +9,7 @@ cmd - return : open -na WezTerm
 cmd - b : open -na Safari 
 
 # close focused window
-cmd - q : yabai -m window --close; yabai -m window --focus last
+# cmd - q : yabai -m window --close; yabai -m window --focus last
 
 # CHANGE FOCUS
 # window
@@ -68,12 +68,12 @@ fn - f : yabai -m window --resize bottom:0:100
 fn - g : yabai -m window --resize left:100:0
 
 # create desktop 
-cmd + shift - n : yabai -m space --create && \
+alt + shift - n : yabai -m space --create && \
                 index="$(yabai -m query --spaces --display | jq last.index)" && \
                 yabai -m space --focus "${index}"
 
 # destroy desktop
-cmd + shift - q : yabai -m space --destroy && yabai -m space --focus last
+alt + shift - q : yabai -m space --destroy && yabai -m space --focus last
 
 # rotate tree
 alt - r : yabai -m space --rotate 270
@@ -87,7 +87,7 @@ alt - x : yabai -m space --mirror x-axis
 alt - f : yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
-# shift + alt - f : yabai -m window --toggle native-fullscreen
+shift + alt - f : yabai -m window --toggle native-fullscreen
 
 # toggle window split type
 alt - e : yabai -m window --toggle split

@@ -2,7 +2,8 @@ local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
 -- Creates the file under the cursor in the current working directory 
-keymap('n', '<leader>mf', '<cmd>:e <cfile>:p<cr>')
+-- keymap('n', '<leader>mf', '<cmd>e <cfile>:p<cr>')
+keymap('n', '<leader>mf', '<cmd>e %:p:h/<cfile><cr>')
 
 -- Use jk to leave insert mode 
 keymap('i', 'jk', '<ESC>')
@@ -13,7 +14,8 @@ keymap('n', '<leader>sh', '#*')
 -- Replace all occurrances of string under cursor
 keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', {desc = 'Replace all occurrances of string under cursor'})
 -- Toggle directory tree
-keymap('n', '<leader>e', '<cmd>Neotree toggle reveal_force_cwd<cr>')
+keymap('n', '<leader>e', '<cmd>Neotree toggle<cr>')
+-- keymap('n', '<leader>e', '<cmd>Neotree toggle reveal_force_cwd<cr>')
 -- Rebinding comment toggles
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', {desc = 'Comment current line'})
 keymap('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)gv', {desc = 'Comment block'})
@@ -67,7 +69,7 @@ keymap('n', '<leader> l', ':Lazy<cr>')
 
 -- Telescope 
 -- Find file in current directory
-keymap('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<cr>', {})
+keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {})
 -- Find string in current directory
 keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {})
 -- List open buffers
