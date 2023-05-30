@@ -8,8 +8,12 @@ cmd - return : open -na WezTerm
 # open a new Safari window 
 cmd - b : open -na Safari 
 
-# close focused window
-# cmd - q : yabai -m window --close; yabai -m window --focus last
+# close focused window, but use default behavior of closing tab for safari 
+cmd - w [
+  * : yabai -m window --close; yabai -m window --focus last
+  "Safari" ~
+] 
+# cmd - w : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
 
 # CHANGE FOCUS
 # window

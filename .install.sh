@@ -13,6 +13,7 @@ brew analytics off
 brew tap homebrew/cask-fonts
 brew tap koekeishiya/formulae
 brew tap FelixKratz/formulae
+brew tap spring-io/tap 
 
 brew install mas
 brew install neovim
@@ -36,13 +37,14 @@ brew install micro
 brew install node
 brew install nnn 
 brew install pandoc
-# brew install starship
+brew install spring-boot
 brew install romkatv/gitstatus/gitstatus
 brew install sf-symbols
 brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
 brew install zsh-completions
 brew install zsh-vi-mode
+# brew install starship
 
 # Brew Casks
 brew install --cask font-hack-nerd-font

@@ -5,6 +5,8 @@ vim.g.mapleader = " "
 -- keymap('n', '<leader>mf', '<cmd>e <cfile>:p<cr>')
 keymap('n', '<leader>mf', '<cmd>e %:p:h/<cfile><cr>')
 
+keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', {desc = 'Line Diagnostics'})
+keymap('n', '<leader> m', '<cmd>Mason<cr>')
 -- Use jk to leave insert mode 
 keymap('i', 'jk', '<ESC>')
 -- Remove highlighting
@@ -12,10 +14,10 @@ keymap('n', '<leader>rh', ':nohl<cr>')
 -- Highlight all occurrances of string under cursor
 keymap('n', '<leader>sh', '#*')
 -- Replace all occurrances of string under cursor
-keymap('n', '<leader>r', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', {desc = 'Replace all occurrances of string under cursor'})
+keymap('n', '<leader>r', ':%s/<C-r><C-w>//gI<Left><Left><Left>', {desc = 'Replace all occurrances of string under cursor'})
 -- Toggle directory tree
 keymap('n', '<leader>e', '<cmd>Neotree toggle<cr>')
--- keymap('n', '<leader>e', '<cmd>Neotree toggle reveal_force_cwd<cr>')
+keymap('n', '<leader> e', '<cmd>Neotree toggle reveal_force_cwd<cr>')
 -- Rebinding comment toggles
 keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', {desc = 'Comment current line'})
 keymap('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)gv', {desc = 'Comment block'})
@@ -88,3 +90,4 @@ keymap('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {})
 -- keymap('n', 'gd', '<cmd>Telescope lsp_type_definitions<cr>', {})
 keymap('n', ']t', '<Plugin>(jump_next())')
 
+keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')

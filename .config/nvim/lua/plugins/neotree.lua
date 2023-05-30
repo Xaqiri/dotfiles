@@ -12,11 +12,11 @@ return {
     enable_git_status = true,
     window = {
       position = 'float',
-      width = '30%',
+      width = '60%',
       popup = {
         size = {
           height = '50%',
-          width = '30%',
+          width = '60%',
         },
       },
       mappings = {
