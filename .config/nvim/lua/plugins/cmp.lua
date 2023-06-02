@@ -7,9 +7,11 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "saadparwaiz1/cmp_luasnip",
+    "rafamadriz/friendly-snippets"
   },
   opts = function()
     local cmp = require("cmp")
+    require("luasnip.loaders.from_vscode").lazy_load()
     return {
       completion = {
         completeopt = "menu,menuone,noinsert",
@@ -20,8 +22,8 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<S-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<S-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-s>"] = cmp.mapping.complete(),

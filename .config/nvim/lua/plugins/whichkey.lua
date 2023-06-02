@@ -6,6 +6,8 @@ return {
     },
   },
   config = function(_, opts)
-    require('which-key').setup(opts)
+      local presets = require("which-key.plugins.presets")
+      presets.operators["v"] = nil
+      require('which-key').setup(opts)
   end,
 }

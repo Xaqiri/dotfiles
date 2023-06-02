@@ -4,9 +4,11 @@ vim.g.mapleader = " "
 -- Creates the file under the cursor in the current working directory 
 -- keymap('n', '<leader>mf', '<cmd>e <cfile>:p<cr>')
 keymap('n', '<leader>mf', '<cmd>e %:p:h/<cfile><cr>')
-
 keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', {desc = 'Line Diagnostics'})
 keymap('n', '<leader> m', '<cmd>Mason<cr>')
+
+keymap('n', 'gh', '<HOME>')
+-- keymap('n', 'gl', '<END>')
 -- Use jk to leave insert mode 
 keymap('i', 'jk', '<ESC>')
 -- Remove highlighting
@@ -39,10 +41,10 @@ keymap('n', '<leader>l', '<C-w>l', {desc = 'Move to split right'})
 -- Make script executable
 keymap('n', '<leader>x', '<cmd>silent! !chmod +x %<cr>', {desc = 'Make shell script executable'})
 -- Resize splits
-keymap('n', '<S-j>', ':resize +2<cr>', {desc = 'Adjust split height'})
-keymap('n', '<S-k>', ':resize -2<cr>', {desc = 'Adjust split height'})
-keymap('n', '<S-h>', ':vertical resize -2<cr>', {desc = 'Adjust split width'})
-keymap('n', '<S-l>', ':vertical resize +2<cr>', {desc = 'Adjust split width'})
+keymap('n', '<leader> <S-j>', ':resize +2<cr>', {desc = 'Adjust split height'})
+keymap('n', '<leader> <S-k>', ':resize -2<cr>', {desc = 'Adjust split height'})
+keymap('n', '<leader> <S-h>', ':vertical resize -2<cr>', {desc = 'Adjust split width'})
+keymap('n', '<leader> <S-l>', ':vertical resize +2<cr>', {desc = 'Adjust split width'})
 keymap('n', '<leader>=', '<C-w>=', {desc = 'Equalize split sizes'})
 -- Better indenting
 keymap('v', '<', '<gv')
@@ -90,4 +92,5 @@ keymap('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {})
 -- keymap('n', 'gd', '<cmd>Telescope lsp_type_definitions<cr>', {})
 keymap('n', ']t', '<Plugin>(jump_next())')
 
+keymap('n', '<leader>cf', '<cmd>lua vim.lsp.buf.format({async=true})<cr>', {desc = "Format code in current buffer"})
 keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>')

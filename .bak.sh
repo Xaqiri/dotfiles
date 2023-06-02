@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo "Enter path to directory: "
-# echo "(/bak will create $HOME/bak)"
-read bakPath
+bakPath=".config"
 [ ! -d "$bakPath" ] && mkdir "$bakPath"
 
 [ -f "$HOME/.zshrc" ] && \

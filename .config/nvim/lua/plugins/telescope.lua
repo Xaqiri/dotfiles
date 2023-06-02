@@ -1,42 +1,42 @@
 return {
-  "nvim-telescope/telescope.nvim",
-  -- 'nvim-telescope/telescope-fzf-native.nvim', build = ':make',
-  cmd = "Telescope",
-  version = false, -- telescope did only one release, so use HEAD for now
-  opts = {
-    file_ignore_patterns = {
-      'node%_modules/.*',
-      '.git',
-    },
-    pickers = {
-      find_files = {
-        theme = 'dropdown',
-        find_command = {'find', '-L', '.', '-type', 'f'},
+    "nvim-telescope/telescope.nvim",
+    -- 'nvim-telescope/telescope-fzf-native.nvim', build = ':make',
+    cmd = "Telescope",
+    version = false, -- telescope did only one release, so use HEAD for now
+    opts = {
         file_ignore_patterns = {
-          'node_modules',
-          '.git',
+            'node%_modules/.*',
+            '.git',
         },
-        -- layout_config={width=0.75, height=0.8},
-      },
-      buffers = {
-        theme = 'dropdown'
-      },
-      grep_string = {
-        theme = 'cursor',
-        layout_config={width=0.8, height=0.25}
-      },
+        defaults = {
+            borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
+        },
+        pickers = {
+            find_files = {
+                find_command = { 'fd', '-L', '-t', 'f', '.' },
+                file_ignore_patterns = {
+                    'node_modules',
+                    '.git',
+                },
+                -- layout_config={width=0.75, height=0.8},
+            },
+            grep_string = {
+                theme = 'cursor',
+                layout_config = { width = 0.8, height = 0.4 },
+                borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
+            },
+        },
+        -- extensions = {
+        --   fzf = {
+        --     fuzzy = true,
+        --     override_generic_sorter = true,
+        --     override_file_sorter = true,
+        --     case_mode = 'smart_case',
+        --   },
+        -- },
     },
-    -- extensions = {
-    --   fzf = {
-    --     fuzzy = true,
-    --     override_generic_sorter = true,
-    --     override_file_sorter = true,
-    --     case_mode = 'smart_case',
-    --   },
-    -- },
-  },
-  config = function(_, opts)
-    require('telescope').setup(opts)
-    -- require('telescope').load_extension('fzf')
-  end,
+    config = function(_, opts)
+        require('telescope').setup(opts)
+        -- require('telescope').load_extension('fzf')
+    end,
 }
