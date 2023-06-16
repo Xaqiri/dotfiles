@@ -5,7 +5,7 @@ return {
   },
   opts = {
      -- A list of parser names, or 'all' (the five listed parsers should always be installed)
-      ensure_installed = { 'go', 'c', 'lua', 'vim', 'vimdoc', 'query', 'regex', 'bash' },
+      ensure_installed = { 'go', 'c', 'lua', 'vim', 'vimdoc', 'query', 'regex', 'bash', 'clojure' },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,

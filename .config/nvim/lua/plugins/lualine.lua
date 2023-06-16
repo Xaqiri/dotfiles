@@ -3,35 +3,42 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   opts = {
     icons_enabled = true,
-    theme = 'tokyonight',
-    component_separators = '│',
+    theme = "auto",
+    component_separators = { left = '', right = '' },
+    -- component_separators = { left = '│', right = '│' },
     section_separators = { left = '', right = '' },
     sections = {
       lualine_a = {
-        { 'mode', separator = { left = '' }, right_padding = 2 },
+        { 'mode', separator = { right = '' }, right_padding = 2 },
       },
-      lualine_b = { 'filename', 'branch' },
-      lualine_c = { 'fileformat' },
+      lualine_b = { { 'filename', separator = { right = '' }, right_padding = 2 }, },
+      lualine_c = { 'branch', 'diff', 'diagnostics' },
       lualine_x = {},
-      lualine_y = { 'filetype', 'progress' },
+      lualine_y = {
+          { 'datetime', separator = { left = '' }, style = '%H:%M' },
+          { 'filetype', separator = '' },
+      },
       lualine_z = {
-        { 'location', separator = { right = '' }, left_padding = 2 },
+        { 'progress', separator = { left = '' }, left_padding = 2, colored = false },
+        { 'location' },
       },
     },
     inactive_sections = {
-      lualine_a = { 'filename' },
+      -- lualine_a = { 'filename' },
+      lualine_a = {},
       lualine_b = {},
       lualine_c = {},
       lualine_x = {},
       lualine_y = {},
-      lualine_z = { 'location' },
+      lualine_z = {},
     },
-    tabline = {},
+    tabline = {
+        lualine_a = { { 'buffers', separator = { right = '' }, right_padding = 2 }, },
+        lualine_z = { { 'datetime', separator = { left = '' }, left_padding = 2, colored = false }, },
+    },
     extensions = {},
   },
   config = function(_, opts)
-    require('lualine').setup({
-      options = opts,
-    })
+    require('lualine').setup(opts)
   end,
 }

@@ -1,6 +1,7 @@
 return {
     "folke/noice.nvim",
     event = "VeryLazy",
+    enabled = false,
     opts = {
         views = {
             cmdline_popup = {
@@ -17,16 +18,26 @@ return {
             },
         },
         cmdline = {
-            view = "cmdline_popup",
+            view = "cmdline",
+        },
+        lsp = {
+            override = {
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+                ["vim.lsp.util.stylize_markdown"] = false,
+                ["cmp.entry.get_documentation"] = false,
+            }
         },
         presets = {
             bottom_search = true,
             command_palette = true,
-            long_message_to_split = true,
+            long_message_to_split = false,
             lsp_doc_border = true,
         },
     },
     dependencies = {
         "MunifTanjim/nui.nvim",
     },
+    -- config = function (_, opts)
+    -- require("noice").setup(opts)
+    -- end
 }

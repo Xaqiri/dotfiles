@@ -37,7 +37,9 @@ alias lg="lazygit"
 alias zshrc="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 # alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
+alias relsketchybar="brew services stop sketchybar; brew services start sketchybar"
 alias relyabai="yabai --stop-service; yabai --start-service"
+alias ebar='nvim ~/.config/sketchybar/sketchybarrc'
 alias eyabai='nvim ~/.config/yabai/yabairc'
 alias eskhd='nvim ~/.skhdrc'
 alias fonts="kitty +list-fonts"
@@ -61,6 +63,14 @@ alias add="git add ."
 alias commit="git commit -m"
 alias weather='curl -s "https://api.weather.gov/gridpoints/TAE/34,76/forecast/hourly" | jq | head -100 | grep -A 25 "\"number\": 1" | grep -w -A 1 "temperature"'
 alias serve-spring="open -a Safari localhost:8080; mvn spring-boot::run"
+alias wiki="wiki-tui"
+
+# System aliases sourced from: https://gist.github.com/sebastiancarlos/ccd53b1391fc21994e722ff5b1823774
+# battery information
+alias battery="pmset -g batt | sed -n -E 's/.*([[:digit:]]+%).*; (.*);.*/\1 - \2/p'"
+# date with the format "Mon Jan 01 19:00 2023"
+alias fdate='date +"%a %b %d %H:%M %Y"'
+alias sys="echo -e \"Date\t$(fdate)\nBattery\t$(battery)\" | column -t -s $'\t'"
 
 function ff2() {
     dir="$(basename $curdir)"
@@ -72,6 +82,7 @@ function ff2() {
         --keep-right \
         --info=inline \
         --delimiter / \
+        --keep-right \
         --preview="tree -C {}" \
         --color="fg+:cyan,bg+:-1,border:blue,label:magenta,fg:white,marker:blue,prompt:gray,pointer:blue,info:green" \
         --bind="D:reload(fd -L -t d --hidden . \"${curdir}\" | sed \"s|$curdir/||\")" \
@@ -143,7 +154,9 @@ function suyabai () {
 }
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/pkg/mod/golang.org/x/tools/gopls@v0.12.2:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/miniforge3/bin:/usr/local/anaconda3/bin:$PATH"
@@ -153,6 +166,7 @@ export NNN_TMPFILE="$HOME/.config/nnn/.lastd"
 export EDITOR="$(which nvim)"
 export VISUAL="$(which nvim)"
 export XDG_CONFIG_HOME="$HOME/.config"
+export GOKU_EDN_CONFIG_FILE="$HOME/.config/karabiner/karabiner.edn"
 # export FPATH="$HOME/.config/zsh:$FPATH"
 # export FZF_DEFAULT_COMMAND="ff"
 
@@ -160,7 +174,7 @@ source /opt/homebrew/opt/gitstatus/gitstatus.prompt.zsh
 local topPrompt=$'%F{cyan}\U256d\U2500\U2524%f%~%F{cyan}\U251c\U2500\U2500\U2500%f $GITSTATUS_PROMPT' 
 local botPrompt=$'\n%F{cyan}\U2570\U2500\U2500%f'
 PROMPT=$topPrompt$botPrompt
-RPROMPT='%T'
+RPROMPT='%D %T'
 
 
 
