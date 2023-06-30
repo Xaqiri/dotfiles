@@ -5,7 +5,6 @@ return {
         -- LSP Support
         { 'neovim/nvim-lspconfig' }, -- Required
         {
-            -- Optional
             'williamboman/mason.nvim',
             build = function()
                 pcall(vim.cmd, 'MasonUpdate')
@@ -20,8 +19,4 @@ return {
         { 'saadparwaiz1/cmp_luasnip' },
         { 'rafamadriz/friendly-snippets' }
     },
-    --  opts = {},
-    -- config = function (_, opts)
-    --      require("lsp-zero").setup(opts)
-    --  end
 }

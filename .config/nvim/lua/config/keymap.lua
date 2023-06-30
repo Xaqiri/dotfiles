@@ -1,32 +1,34 @@
 local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
-keymap('n', '<leader>mf', '<cmd>e %:p:h/<cfile><cr>', { desc = 'Creates file under cursor in current directory'})
-keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', {desc = 'Line Diagnostics'})
+keymap('n', '<leader>mf', '<cmd>e %:p:h/<cfile><cr>', { desc = 'Creates file under cursor in current directory' })
+keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', { desc = 'Line Diagnostics' })
 keymap('n', '<leader> m', '<cmd>Mason<cr>')
 keymap({ 'n', 'v' }, 'gh', '<HOME>')
 keymap({ 'n', 'v' }, 'gl', '<END>')
 keymap('i', 'jk', '<ESC>')
-keymap('n', '<leader>rh', ':nohl<cr>', { desc = 'Remove highlighting'} )
+keymap('n', '<leader>rh', ':nohl<cr>', { desc = 'Remove highlighting' })
 keymap('n', '<leader>sh', '#*', { desc = 'Highlight all occurrances of string under cursor' })
-keymap('n', '<leader>r', ':%s/<C-r><C-w>//gI<Left><Left><Left>', {desc = 'Replace all occurrances of string under cursor'})
+keymap('n', '<leader>r', ':%s/<C-r><C-w>//gI<Left><Left><Left>',
+    { desc = 'Replace all occurrances of string under cursor' })
 keymap('n', '<leader>e', '<cmd>Neotree toggle<cr>')
 keymap('n', '<leader> e', '<cmd>Neotree toggle reveal_force_cwd<cr>')
-keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', {desc = 'Comment current line'})
-keymap('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)gv', {desc = 'Comment block'})
+keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', { desc = 'Comment current line' })
+keymap('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)gv', { desc = 'Comment block' })
 keymap('n', '<leader>ss', ':split<cr>')
 keymap('n', '<leader>sv', ':vsplit<cr>')
 keymap('n', '<leader>sx', ':close<cr>')
-keymap('n', '<leader>j', '<C-w>j', {desc = 'Move to split above'})
-keymap('n', '<leader>k', '<C-w>k', {desc = 'Move to split below'})
-keymap('n', '<leader>h', '<C-w>h', {desc = 'Move to split left'})
-keymap('n', '<leader>l', '<C-w>l', {desc = 'Move to split right'})
-keymap('n', '<leader>x', '<cmd>silent! !chmod +x %<cr>', {desc = 'Make shell script executable'})
-keymap('n', '<leader> <S-j>', ':resize +5<cr>', {desc = 'Increase split height'})
-keymap('n', '<leader> <S-k>', ':resize -5<cr>', {desc = 'Decrease split height'})
-keymap('n', '<leader> <S-h>', ':vertical resize -2<cr>', {desc = 'Decrease split width'})
-keymap('n', '<leader> <S-l>', ':vertical resize +2<cr>', {desc = 'Increase split width'})
-keymap('n', '<leader>=', '<C-w>=', {desc = 'Equalize split sizes'})
+keymap('n', '<leader>bd', ':bd<cr>')
+keymap('n', '<leader>j', '<C-w>j', { desc = 'Move to split above' })
+keymap('n', '<leader>k', '<C-w>k', { desc = 'Move to split below' })
+keymap('n', '<leader>h', '<C-w>h', { desc = 'Move to split left' })
+keymap('n', '<leader>l', '<C-w>l', { desc = 'Move to split right' })
+keymap('n', '<leader>x', '<cmd>silent! !chmod +x %<cr>', { desc = 'Make shell script executable' })
+keymap('n', '<leader> <S-j>', ':resize +5<cr>', { desc = 'Increase split height' })
+keymap('n', '<leader> <S-k>', ':resize -5<cr>', { desc = 'Decrease split height' })
+keymap('n', '<leader> <S-h>', ':vertical resize -2<cr>', { desc = 'Decrease split width' })
+keymap('n', '<leader> <S-l>', ':vertical resize +2<cr>', { desc = 'Increase split width' })
+keymap('n', '<leader>=', '<C-w>=', { desc = 'Equalize split sizes' })
 
 -- Better indenting
 keymap('v', '<', '<gv')
@@ -44,24 +46,24 @@ keymap('x', '<A-j>', ":move '>+1<cr>gv-gv")
 keymap('x', '<A-k>', ":move '<-2<cr>gv-gv")
 
 -- Copy and paste from clipboard
-keymap({'n', 'x'}, '<leader>y', '"+y')
-keymap({'n', 'x'}, '<leader>p', '"+p')
+keymap({ 'n', 'x' }, '<leader>y', '"+y')
+keymap({ 'n', 'x' }, '<leader>p', '"+p')
 
 -- Delete character without replacing anything that's copied
-keymap({'n', 'x'}, 'x', '"_x')
-keymap({'n', 'x'}, 'X', '"_X')
+keymap({ 'n', 'x' }, 'x', '"_x')
+keymap({ 'n', 'x' }, 'X', '"_X')
 
 -- Copy current line
-keymap({'n', 'x'}, 'yy', ':keepjumps normal! 0v$y<cr>', {desc = 'Copy current line'})
-keymap({'n', 'x'}, 'YY', ':keepjumps normal! 0v$"+y<cr>', {desc = 'Copy current line to clipboard'})
+keymap({ 'n', 'x' }, 'yy', ':keepjumps normal! 0v$y<cr>', { desc = 'Copy current line' })
+keymap({ 'n', 'x' }, 'YY', ':keepjumps normal! 0v$"+y<cr>', { desc = 'Copy current line to clipboard' })
 
 -- Select entire document
-keymap('n', '<leader>a', ':keepjumps normal! ggVG<cr>', {desc = 'Select entire document'})
+keymap('n', '<leader>a', ':keepjumps normal! ggVG<cr>', { desc = 'Select entire document' })
 
 -- Open Lazy
 keymap('n', '<leader> l', ':Lazy<cr>')
 
--- Telescope 
+-- Telescope
 -- Find file in current directory
 keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {})
 -- Find string in current directory

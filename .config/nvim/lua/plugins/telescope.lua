@@ -10,6 +10,11 @@ return {
         },
         defaults = {
             borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
+            mappings = {
+                n = {
+                    ['bd'] = "delete_buffer"
+                },
+            },
         },
         pickers = {
             find_files = {
@@ -24,6 +29,9 @@ return {
                 theme = 'cursor',
                 layout_config = { width = 0.8, height = 0.4 },
                 borderchars = { "═", "║", "═", "║", "╔", "╗", "╝", "╚" },
+            },
+            buffers = {
+                theme = 'ivy',
             },
         },
         -- extensions = {

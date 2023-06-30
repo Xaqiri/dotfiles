@@ -38,7 +38,7 @@ alias zshrc="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 # alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 alias relsketchybar="brew services stop sketchybar; brew services start sketchybar"
-alias relyabai="yabai --stop-service; yabai --start-service"
+alias relyabai="yabai --stop-service; yabai --start-service; sudo yabai --load-sa"
 alias ebar='nvim ~/.config/sketchybar/sketchybarrc'
 alias eyabai='nvim ~/.config/yabai/yabairc'
 alias eskhd='nvim ~/.skhdrc'
@@ -173,8 +173,8 @@ export GOKU_EDN_CONFIG_FILE="$HOME/.config/karabiner/karabiner.edn"
 source /opt/homebrew/opt/gitstatus/gitstatus.prompt.zsh
 local topPrompt=$'%F{cyan}\U256d\U2500\U2524%f%~%F{cyan}\U251c\U2500\U2500\U2500%f $GITSTATUS_PROMPT' 
 local botPrompt=$'\n%F{cyan}\U2570\U2500\U2500%f'
-PROMPT=$topPrompt$botPrompt
 RPROMPT='%D %T'
+PROMPT=$topPrompt$botPrompt
 
 
 

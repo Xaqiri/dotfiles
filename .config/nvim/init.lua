@@ -23,7 +23,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set('n', 'gl', '<End>', { buffer = true })
 end)
 
--- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
 lsp.format_on_save({
@@ -39,7 +38,7 @@ lsp.format_on_save({
 lsp.setup()
 
 -- vim.cmd.colorscheme("night-owl")
-vim.cmd.colorscheme("tokyonight")
 -- vim.cmd [[colorscheme night-owl]]
 -- vim.cmd [[colorscheme kanagawa]]
 -- vim.cmd [[colorscheme tokyonight]]
+vim.cmd.colorscheme("tokyonight")

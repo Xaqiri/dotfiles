@@ -30,5 +30,6 @@ return {
     },
     config = function(_, opts)
         require('neo-tree').setup(opts)
+        vim.cmd([[highlight! link NeoTreeFloatBorder FloatBorder]])
     end,
 }
