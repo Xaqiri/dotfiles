@@ -26,7 +26,7 @@ yabai -m config \
     window_animation_frame_rate 120           \
     window_opacity_duration    0.25           \
     active_window_opacity      1            \
-    normal_window_opacity      1            \
+    normal_window_opacity      0.9            \
     window_opacity             on             \
     insert_feedback_color      0xff9dd274     \
     active_window_border_color 0xff7aa2f7     \
@@ -45,13 +45,13 @@ yabai -m config \
     right_padding              8              \
     window_gap                 8              \
     layout                     bsp            \
-    mouse_modifier             fn             \
+    mouse_modifier             alt             \
     mouse_action1              move           \
     mouse_action2              resize         \
     mouse_drop_action          swap           \
 
 # Exclude problematic apps from being managed:
-yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Steam|Alfred|Activity Monitor)$" manage=off
+yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Alfred|Activity Monitor)$" manage=off
 yabai -m rule --add label="System Settings" app="^System Settings$" title=".*" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off

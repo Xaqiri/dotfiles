@@ -2,6 +2,7 @@ local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
 keymap('n', '<leader>mf', '<cmd>e %:p:h/<cfile><cr>', { desc = 'Creates file under cursor in current directory' })
+keymap('n', '<leader>gx', '<cmd>!open <cfile> -a Safari<cr>', { desc = 'Open link under cursor in browser' })
 keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', { desc = 'Line Diagnostics' })
 keymap('n', '<leader> m', '<cmd>Mason<cr>')
 keymap({ 'n', 'v' }, 'gh', '<HOME>')
@@ -90,14 +91,14 @@ keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = "Pe
 -- Command to saving, converting, and opening markdown files
 -- vim.api.nvim_create_user_command('MD', 'w | silent !markdown "%" > "%":r.html | open "%":r.html -a Safari', {})
 vim.api.nvim_create_user_command('HTMLo',
-    'w | silent !pandoc -s "%" -o ~/notes/html/$(basename "%" .md).html --css ~/notes/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename "%" .md).html | open ~/notes/html/$(basename "%" .md).html -a Safari',
+    'w | silent !pandoc -f markdown+mark -s "%" -o ~/notes/html/$(basename "%" .md).html --css ~/notes/html/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename "%" .md).html | open ~/notes/html/$(basename "%" .md).html -a Safari',
     {})
 vim.api.nvim_create_user_command('HTML',
-    'w | silent !pandoc -s "%" -o ~/notes/html/$(basename "%" .md).html --css ~/notes/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename "%" .md).html',
+    'w | silent !pandoc -f markdown+mark -s "%" -o ~/notes/html/$(basename "%" .md).html --css ~/notes/html/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename "%" .md).html',
     {})
 vim.api.nvim_create_user_command('HTMLtoco',
-    'w | silent !pandoc -s --toc "%" -o ~/notes/html/$(basename "%" .md).html --css ~/notes/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename "%" .md).html | open ~/notes/html/$(basename "%" .md).html -a Safari',
+    'w | silent !pandoc -f markdown+mark -s --toc "%" -o ~/notes/html/$(basename "%" .md).html --css ~/notes/html/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename "%" .md).html | open ~/notes/html/$(basename "%" .md).html -a Safari',
     {})
 vim.api.nvim_create_user_command('HTMLtoc',
-    'w | silent !pandoc -s --toc "%" -o ~/notes/html/$(basename "%" .md).html --css ~/notes/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename "%" .md).html',
+    'w | silent !pandoc -f markdown+mark -s --toc "%" -o ~/notes/html/$(basename "%" .md).html --css ~/notes/html/style.css; sed -i "" "s/.md/.html/g" ~/notes/html/$(basename "%" .md).html',
     {})

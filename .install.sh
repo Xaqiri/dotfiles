@@ -57,7 +57,7 @@ brew install --cask monitorcontrol
 mas install 497799835 #xCode
 
 #Install lunarvim
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+# bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 
 # Downloading config files
 echo "Cloning config files..."

@@ -18,94 +18,98 @@ shift + cmd - j : w=$(yabai -m query --windows --space | jq ".[] | select(.[\"ha
 
 # desktop 
 # cycle forwards on the focused display
-alt - l : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
+lalt - l : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
 # cycle backwards on the focused display
-alt - h : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
+lalt - h : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
 
 # display
-ctrl - h: yabai -m display --focus west
-ctrl - j : yabai -m display --focus south 
-ctrl - k : yabai -m display --focus north
-ctrl - l : yabai -m display --focus east
+# ctrl - h: yabai -m display --focus west
+# ctrl - j : yabai -m display --focus south 
+# ctrl - k : yabai -m display --focus north
+# ctrl - l : yabai -m display --focus east
 
 # MOVE
 # swap window
-cmd + fn - h : yabai -m window --swap west
-cmd + fn - j : yabai -m window --swap south
-cmd + fn - k : yabai -m window --swap north
-cmd + fn - l : yabai -m window --swap east
+cmd + ralt - h : yabai -m window --swap west
+cmd + ralt - j : yabai -m window --swap south
+cmd + ralt - k : yabai -m window --swap north
+cmd + ralt - l : yabai -m window --swap east
 
 # warp window
-cmd + fn - s : yabai -m window --warp west
-cmd + fn - f : yabai -m window --warp south
-cmd + fn - d : yabai -m window --warp north
-cmd + fn - g : yabai -m window --warp east
+cmd + ralt - s : yabai -m window --warp west
+cmd + ralt - f : yabai -m window --warp south
+cmd + ralt - d : yabai -m window --warp north
+cmd + ralt - g : yabai -m window --warp east
 
 # move window between desktops
-alt + fn - h : yabai -m window --space prev; yabai -m space --focus prev 
-alt + fn - l : yabai -m window --space next; yabai -m space --focus next 
+lalt + shift - h : yabai -m window --space prev; yabai -m space --focus prev 
+lalt + shift - l: yabai -m window --space next; yabai -m space --focus next 
 
 # move window between displays
-ctrl + fn - h : yabai -m window --display west; yabai -m display --focus west
-ctrl + fn - j : yabai -m window --display south; yabai -m display --focus south
-ctrl + fn - k : yabai -m window --display north; yabai -m display --focus north
-ctrl + fn - l : yabai -m window --display east; yabai -m display --focus east
+ctrl + ralt - h : yabai -m window --display west; yabai -m display --focus west
+ctrl + ralt - j : yabai -m window --display south; yabai -m display --focus south
+ctrl + ralt - k : yabai -m window --display north; yabai -m display --focus north
+ctrl + ralt - l : yabai -m window --display east; yabai -m display --focus east
 
 # resize window 
-# fn - k : yabai -m window --resize bottom:0:-50; yabai -m window --resize top:0:-50
-# fn - h : yabai -m window --resize left:-25:0; yabai -m window --resize right:-25:0
-# fn - j : yabai -m window --resize bottom:0:50; yabai -m window --resize top:0:50
-# fn - l : yabai -m window --resize left:50:0;yabai -m window --resize right:50:0
-fn - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
-fn - j : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
-fn - k : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
-fn - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
+# ralt - k : yabai -m window --resize bottom:0:-50; yabai -m window --resize top:0:-50
+# ralt - h : yabai -m window --resize left:-25:0; yabai -m window --resize right:-25:0
+# ralt - j : yabai -m window --resize bottom:0:50; yabai -m window --resize top:0:50
+# ralt - l : yabai -m window --resize left:50:0;yabai -m window --resize right:50:0
+ralt - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
+ralt - j : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
+ralt - k : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
+ralt - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
 
 # create desktop 
-alt + shift - n : yabai -m space --create && \
+lalt + shift - n : yabai -m space --create && \
                 index="$(yabai -m query --spaces --display | jq last.index)" && \
                 yabai -m window --space "${index}" && \
                 yabai -m space --focus "${index}"
 
 # destroy desktop
-alt + shift - q : yabai -m space --destroy && yabai -m space --focus last
+lalt + shift - q : yabai -m space --destroy && yabai -m space --focus last
 
 # rotate tree
-alt - r : yabai -m space --rotate 270
-shift + alt - r : yabai -m space --rotate 90
+lalt - r : yabai -m space --rotate 270
+shift + lalt - r : yabai -m space --rotate 90
 
 # mirror tree 
-alt - y : yabai -m space --mirror y-axis
-alt - x : yabai -m space --mirror x-axis
+# lalt - y : yabai -m space --mirror y-axis
+# lalt - x : yabai -m space --mirror x-axis
 
 # toggle window native fullscreen
-shift + alt - f : yabai -m window --toggle native-fullscreen
+shift + lalt - f : yabai -m window --toggle native-fullscreen
 
 # toggle window split type
-alt - e : yabai -m window --toggle split
+lalt - e : yabai -m window --toggle split
 
 # change layout of desktop
 # ctrl + alt - a : yabai -m space --layout bsp
-# ctrl + alt - s : yabai -m space --layout monocle
+# ctrl + alt - s : yabai -m space --layout managed
 # ctrl + alt - d : yabai -m space --layout float
 
 # snap floating windows to grid
 # <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
-# fn - m : yabai -m window --toggle float; yabai -m window --grid 1:12:1:0:10:1
-fn - m : yabai -m window --toggle float; yabai -m window --grid 1:12:2:0:8:1
-fn - c : yabai -m window --toggle float; yabai -m window --grid 12:12:1:2:10:9
-cmd + fn - m : yabai -m window --toggle float; yabai -m window --grid 1:12:3:0:6:1
+# landscape orientation
+ralt - m : yabai -m window --toggle float; yabai -m window --grid 12:12:3:0:6:12
+ralt - c : yabai -m window --toggle float; yabai -m window --grid 12:12:1:2:10:9
+# cmd + ralt - m : yabai -m window --toggle float; yabai -m window --grid 1:12:3:0:6:1
 # toggle window fullscreen
-fn - f : yabai -m window --toggle zoom-fullscreen
+ralt - f : yabai -m window --toggle zoom-fullscreen
 
+# potrait orientation 
+# <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
+cmd + ralt - m : yabai -m window --toggle float; yabai -m window --grid 12:12:0:3:12:6
 
 # Balance the window layout
-fn - b : yabai -m space --balance
+ralt - b : yabai -m space --balance
 
 # Reset padding 
-fn - p : yabai -m space --toggle padding; yabai -m space --toggle gap; yabai -m config external_bar all:25:0; yabai -m config window_border_radius 12; yabai -m config window_border_width 2; 
+ralt - p : yabai -m space --toggle padding; yabai -m space --toggle gap; yabai -m config external_bar all:25:0; yabai -m config window_border_radius 12; yabai -m config window_border_width 2; 
 # Remove padding 
-cmd + fn - p : yabai -m space --toggle padding; yabai -m space --toggle gap; yabai -m config external_bar all:0:0; yabai -m config window_border_radius 0; yabai -m config window_border_width 8;
-# fn + cmd - p : yabai -m config --toggle padding; yabai -m space --toggle gap; yabai -m space --toggle border; yabai -m config external_bar all:0:0; yabai -m config window_border_radius 0; yabai -m config window_border_width 8; yabai -m config window_border_placement exterior; 
-# fn - b : yabai -m config window_border_radius 0
-# fn + cmd - b : yabai -m config window_border_radius 12
+cmd + ralt - p : yabai -m space --toggle padding; yabai -m space --toggle gap; yabai -m config external_bar all:0:0; yabai -m config window_border_radius 0; yabai -m config window_border_width 8;
+
+# ralt + cmd - p : yabai -m config --toggle padding; yabai -m space --toggle gap; yabai -m space --toggle border; yabai -m config external_bar all:0:0; yabai -m config window_border_radius 0; yabai -m config window_border_width 8; yabai -m config window_border_placement exterior; 
+# ralt - b : yabai -m config window_border_radius 0
+# ralt + cmd - b : yabai -m config window_border_radius 12

@@ -34,27 +34,29 @@ source $HOME/.config/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 alias ls="ls -a --color"
 alias rm="rm -rf"
 alias lg="lazygit"
-alias zshrc="nvim ~/.zshrc"
+alias ezsh="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
-# alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 alias relsketchybar="brew services stop sketchybar; brew services start sketchybar"
 alias relyabai="yabai --stop-service; yabai --start-service; sudo yabai --load-sa"
+# alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 alias ebar='nvim ~/.config/sketchybar/sketchybarrc'
 alias eyabai='nvim ~/.config/yabai/yabairc'
 alias eskhd='nvim ~/.skhdrc'
+alias ekitty="nvim ~/.config/kitty/kitty.conf"
+alias ewezterm="nvim ~/.config/wezterm/wezterm.lua"
+alias ealacritty="nvim ~/.config/alacritty/alacritty.yml"
+alias envim="nvim ~/.config/nvim"
+alias elvim="nvim ~/.config/lvim/config.lua"
 alias fonts="kitty +list-fonts"
 alias themes="kitty +kitten themes"
-alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
-alias weztermconfig="nvim ~/.config/wezterm/wezterm.lua"
-alias lvimconfig="nvim ~/.config/lvim/config.lua"
 alias guni="goUnicode"
 alias notes="nvim ~/notes"
 alias snotes="ff ~/notes"
 alias config="nvim ~/.config"
-alias nvimconfig="nvim ~/.config/nvim"
 alias brewup="brew upgrade && brew update"
 alias projects="cd ~/programming/projects"
 alias sprojects="ff ~/programming/projects"
+alias sprog="ff ~/programming"
 alias status="git status"
 alias push="git push"
 alias pull="git pull"
@@ -64,7 +66,9 @@ alias commit="git commit -m"
 alias weather='curl -s "https://api.weather.gov/gridpoints/TAE/34,76/forecast/hourly" | jq | head -100 | grep -A 25 "\"number\": 1" | grep -w -A 1 "temperature"'
 alias serve-spring="open -a Safari localhost:8080; mvn spring-boot::run"
 alias wiki="wiki-tui"
-
+alias doomemacs="emacsclient -c -n"
+alias emacs="emacs --with-no-titlebar --init-dir=~/.config/emacs"
+alias internet="open -a Safari"
 # System aliases sourced from: https://gist.github.com/sebastiancarlos/ccd53b1391fc21994e722ff5b1823774
 # battery information
 alias battery="pmset -g batt | sed -n -E 's/.*([[:digit:]]+%).*; (.*);.*/\1 - \2/p'"
@@ -161,12 +165,16 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/miniforge3/bin:/usr/local/anaconda3/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
-
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+export PATH="/opt/homebrew/opt/dotnet/libexec:$PATH"
+export PATH="/Users/xaqiri/.dotnet/tools:$PATH"
+export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 export NNN_TMPFILE="$HOME/.config/nnn/.lastd"
 export EDITOR="$(which nvim)"
 export VISUAL="$(which nvim)"
 export XDG_CONFIG_HOME="$HOME/.config"
 export GOKU_EDN_CONFIG_FILE="$HOME/.config/karabiner/karabiner.edn"
+
 # export FPATH="$HOME/.config/zsh:$FPATH"
 # export FZF_DEFAULT_COMMAND="ff"
 
@@ -180,3 +188,8 @@ PROMPT=$topPrompt$botPrompt
 
 # Load Angular CLI autocompletion.
 # source <(ng completion script)
+
+# opam configuration
+[[ ! -r /Users/xaqiri/.opam/opam-init/init.zsh ]] || source /Users/xaqiri/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+[ -f "/Users/xaqiri/.ghcup/env" ] && source "/Users/xaqiri/.ghcup/env" # ghcup-env

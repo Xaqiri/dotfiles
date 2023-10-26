@@ -1,15 +1,20 @@
 return {
     'folke/tokyonight.nvim',
-    lazy = false,
+    lazy = true,
     priority = 1000,
     opts = {
-        style = 'night',
+        style = 'storm',
         transparent = true,
+        terminal_colors = true,
         styles = {
             sidebars = 'transparent',
             floats = 'transparent',
-            functions = { italic = false },
+            functions = { italic = true },
+            comments = { italic = true },
         },
+        on_colors = function(colors)
+            colors.comment = colors.comment
+        end,
         on_highlights = function(hl, c)
             hl.TelescopeBorder = {
                 fg = c.blue,
