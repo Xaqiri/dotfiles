@@ -1,0 +1,25 @@
+theme = "tokyonight_storm"
+
+[editor]
+line-number = "relative"
+bufferline = "multiple"
+cursorline = true
+color-modes = true
+
+[editor.indent-guides]
+render = true
+
+[editor.lsp]
+display-inlay-hints = true
+display-messages = true
+
+
+[editor.soft-wrap]
+enable = true
+
+[editor.cursor-shape]
+insert = "bar"
+
+[keys.insert.j]
+k = "normal_mode"
+

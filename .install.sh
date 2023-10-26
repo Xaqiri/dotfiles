@@ -9,59 +9,13 @@ xcode-select --install
 eval "$(/opt/homebrew/bin/brew shellenv)"
 brew analytics off
 
-# Brew Taps
-brew tap homebrew/cask-fonts
-brew tap koekeishiya/formulae
-brew tap FelixKratz/formulae
-brew tap spring-io/tap 
-
-brew install mas
-brew install neovim
-brew install neofetch
-brew install jq
-brew install git
-brew install gh
-brew install lazygit
-brew install fzf
-brew install btop
-brew install switchaudio-osx
-brew install skhd
-brew install yabai
-brew install tree
-brew install sketchybar
-brew install go
-brew install rust
-brew install curl
-brew install gcc
-brew install micro
-brew install node
-brew install nnn 
-brew install pandoc
-brew install spring-boot
-brew install romkatv/gitstatus/gitstatus
-brew install sf-symbols
-brew install zsh-autosuggestions
-brew install zsh-syntax-highlighting
-brew install zsh-completions
-brew install zsh-vi-mode
-# brew install starship
-
-# Brew Casks
-brew install --cask font-hack-nerd-font
-brew install --cask font-victor-mono-nerd-font
-brew install --cask kitty
-brew install --cask wezterm
-brew install --cask monitorcontrol
-
-# Install Mac Store apps
-mas install 497799835 #xCode
-
-#Install lunarvim
-# bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-
 # Downloading config files
 echo "Cloning config files..."
 [ ! -d "$HOME/dotfiles" ] && git clone -b main https://github.com/Xaqiri/dotfiles $HOME/dotfiles
+
+# Install everything from the Brewfile
+echo "Installing applications from Brewfile..."
+(cd &HOME/dotfiles && brew bundle install)
 
 if [ ! -f "$HOME/.zshrc" ]
 then cp "$HOME/dotfiles/.zshrc" $HOME
@@ -89,19 +43,21 @@ fi
 
 [ -d "$HOME/dotfiles" ] && rm -rf "$HOME/dotfiles"
 
-
 # Installing Fonts
+echo "Installing fonts..."
 git clone https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git /tmp/SFMono_Nerd_Font
 mv /tmp/SFMono_Nerd_Font/* $HOME/Library/Fonts
 rm -rf /tmp/SFMono_Nerd_Font/
 
 # Installing sketchybar
+echo "Installing sketchybar..."
 curl -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v1.0.4/sketchybar-app-font.ttf -o $HOME/Library/Fonts/sketchybar-app-font.ttf
 
 source $HOME/.zshrc
 cfg config --local status.showUntrackedFiles no
 
 # Start services
-brew services start skhd
-brew services start yabai
+echo "Starting services..."
+skhd --start-service
+yabai --start-service
 brew services start sketchybar

@@ -1,12 +1,10 @@
 Terminal: 
-  Kitty
-  Alacritty
+  Wezterm
 
 Shell: 
   zsh
 
 Editor:
-  LunarVim
   NeoVim
   Micro
 

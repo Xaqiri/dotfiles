@@ -14,18 +14,6 @@ bakPath=".config"
   echo ".skhdrc not found"
 
 
-if [ -d "$HOME/.config/kitty" ] 
-then
-  echo "Backing up kitty..." 
-  if [ ! -d "$bakPath/kitty" ] 
-  then
-    mkdir "$bakPath/kitty"
-  fi
-  cp -r "$HOME/.config/kitty" "$bakPath"
-else
-  echo "kitty config not found" 
-fi
-
 if [ -d "$HOME/.config/wezterm" ] 
 then
   echo "Backing up wezterm..." 
@@ -50,18 +38,6 @@ else
   echo "zsh-vi-mode config not found" 
 fi
 
-if [ -d "$HOME/.config/lvim" ] 
-then
-  echo "Backing up lvim..." 
-  if [ ! -d "$bakPath/lvim" ] 
-  then
-    mkdir "$bakPath/lvim" 
-  fi
-  cp -r "$HOME/.config/lvim" "$bakPath" 
-else
-  echo "lvim config not found" 
-fi
-
 if [ -d "$HOME/.config/nvim" ] 
 then
   echo "Backing up neovim..." 
@@ -72,6 +48,30 @@ then
   cp -r "$HOME/.config/nvim" "$bakPath" 
 else
   echo "nvim config not found" 
+fi
+
+if [ -d "$HOME/.config/helix" ] 
+then
+  echo "Backing up helix..." 
+  if [ ! -d "$bakPath/helix" ] 
+  then
+    mkdir "$bakPath/helix" 
+  fi
+  cp -r "$HOME/.config/helix" "$bakPath" 
+else
+  echo "helix config not found" 
+fi
+
+if [ -d "$HOME/.config/zellij" ] 
+then
+  echo "Backing up zellij..." 
+  if [ ! -d "$bakPath/zellij" ] 
+  then
+    mkdir "$bakPath/zellij" 
+  fi
+  cp -r "$HOME/.config/zellij" "$bakPath" 
+else
+  echo "zellij config not found" 
 fi
 
 if [ -d "$HOME/.config/yabai" ] 
