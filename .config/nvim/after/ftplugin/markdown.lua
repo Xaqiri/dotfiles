@@ -1,7 +1,7 @@
 local v = vim.opt
 v.number = false
 v.relativenumber = false
-v.conceallevel = 3
+v.conceallevel = 2
 v.wrap = true
 v.linebreak = true
 v.tabstop = 2

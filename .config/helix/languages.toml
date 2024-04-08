@@ -1,1 +1,16 @@
-use-grammars = { only = [ 'go', 'dart', 'haskell', 'markdown', 'json', 'yaml', 'toml']}
+use-grammars = { only = [ 'go', 'dart', 'rust', 'haskell', 'markdown', 'json', 'yaml', 'toml']}
+
+[[language]]
+name = "rust"
+auto-format = true
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[[language]]
+name = "go"
+scope = "source.go"
+file-types = ["go"]
+roots = ["go.mod"]
+language-servers = ["gopls"]
+auto-format = true

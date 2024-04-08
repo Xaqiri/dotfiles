@@ -3,8 +3,8 @@
 # Unload the macOS WindowManager process
 launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
 
-sudo yabai --load-sa
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
 yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
 yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
 yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
@@ -13,6 +13,15 @@ yabai -m signal --add event=window_destroyed action="sketchybar --trigger window
 # active_window_border_color 0xff0398fc   \
 # Original purple
 # normal_window_border_color 0xff6f03fc   \
+#
+# active_window_border_color 0xff7aa2f7     \
+# normal_window_border_color 0xff1a1b26     \
+# window_border_width        2              \
+# window_border_radius       12             \
+# window_border_blur         on             \
+# window_border_hidpi        off            \
+# window_border              on             \
+ 
 yabai -m config \
     external_bar               all:25:0       \
     mouse_follows_focus        on             \
@@ -25,17 +34,10 @@ yabai -m config \
     window_animation_duration  0.0            \
     window_animation_frame_rate 120           \
     window_opacity_duration    0.25           \
-    active_window_opacity      1            \
+    active_window_opacity      1.0            \
     normal_window_opacity      0.9            \
     window_opacity             on             \
     insert_feedback_color      0xff9dd274     \
-    active_window_border_color 0xff7aa2f7     \
-    normal_window_border_color 0xff1a1b26     \
-    window_border_width        2              \
-    window_border_radius       12             \
-    window_border_blur         on             \
-    window_border_hidpi        off            \
-    window_border              on             \
     split_ratio                0.50           \
     split_type                 auto           \
     auto_balance               off            \
@@ -51,7 +53,7 @@ yabai -m config \
     mouse_drop_action          swap           \
 
 # Exclude problematic apps from being managed:
-yabai -m rule --add app="^(LuLu|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Alfred|Activity Monitor)$" manage=off
+yabai -m rule --add app="^(Simulator|Calculator|Software Update|Dictionary|VLC|System Preferences|System Settings|zoom.us|Photo Booth|Archive Utility|Python|LibreOffice|App Store|Alfred|Activity Monitor)$" manage=off
 yabai -m rule --add label="System Settings" app="^System Settings$" title=".*" manage=off
 yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
 yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off

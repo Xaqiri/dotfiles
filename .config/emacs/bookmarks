@@ -1,0 +1,29 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("sicp"
+ (front-context-string . "\n2 Building Abst")
+ (rear-context-string . "ter 1,  Up: Top\n")
+ (position . 213860)
+ (last-modified 26014 34941 299847 0)
+ (filename . "/Users/xaqiri/.config/emacs/elpa/sicp-20200512.1137/sicp")
+ (info-node . "Chapter 2")
+ (handler . Info-bookmark-jump))
+("(sicp) 1-2"
+ (front-context-string . "\n1.2 Procedures ")
+ (rear-context-string . "  Up: Chapter 1\n")
+ (position . 105551)
+ (last-modified 26014 31943 479998 0)
+ (filename . "/Users/xaqiri/.config/emacs/elpa/sicp-20200512.1137/sicp")
+ (info-node . "1-2")
+ (handler . Info-bookmark-jump))
+("(sicp) 1-1-8"
+ (front-context-string . "\n1.1.8 Procedure")
+ (rear-context-string . "1-1-7,  Up: 1-1\n")
+ (position . 94604)
+ (last-modified 26014 24803 243942 0)
+ (filename . "/Users/xaqiri/.config/emacs/elpa/sicp-20200512.1137/sicp")
+ (info-node . "1-1-8")
+ (handler . Info-bookmark-jump))
+)

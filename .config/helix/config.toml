@@ -13,12 +13,14 @@ render = true
 display-inlay-hints = true
 display-messages = true
 
-
 [editor.soft-wrap]
 enable = true
 
 [editor.cursor-shape]
 insert = "bar"
+
+[keys.normal.space]
+i = ":toggle lsp.display-inlay-hints"
 
 [keys.insert.j]
 k = "normal_mode"

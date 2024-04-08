@@ -1,9 +1,7 @@
 local c = require("tokyonight.colors").setup()
 
-vim.cmd("syntax match concHeader '#' conceal")
-vim.cmd("syntax match concHeader '# ' conceal")
+vim.cmd("syntax match concHeader '#\\+ ' conceal")
 
--- vim.api.nvim_set_hl(0, "@punctuation.special.markdown", { fg = "#2f334d" })
 vim.api.nvim_set_hl(0, "@punctuation.special.markdown", { fg = c.comment })
 vim.api.nvim_set_hl(0, "@text.strong", { fg = c.cyan, bold = true })
 vim.api.nvim_set_hl(0, "@text.emphasis", { fg = c.cyan, italic = true })
@@ -21,3 +19,12 @@ vim.api.nvim_set_hl(0, "@text.title.3.marker.markdown", { fg = c.green })
 vim.api.nvim_set_hl(0, "@text.title.4.marker.markdown", { fg = c.cyan })
 vim.api.nvim_set_hl(0, "@text.title.5.marker.markdown", { fg = c.blue })
 vim.api.nvim_set_hl(0, "@text.title.6.marker.markdown", { fg = c.magenta })
+
+vim.api.nvim_set_hl(0, "ObsidianTodo", { bold = true, fg = c.cyan })
+vim.api.nvim_set_hl(0, "ObsidianDone", { bold = true, fg = c.green })
+vim.api.nvim_set_hl(0, "ObsidianRightArrow", { bold = true, fg = c.orange })
+vim.api.nvim_set_hl(0, "ObsidianTilde", { bold = true, fg = c.red })
+vim.api.nvim_set_hl(0, "ObsidianRefText", { underline = true, fg = c.cyan })
+vim.api.nvim_set_hl(0, "ObsidianExtLinkIcon", { fg = c.cyan })
+vim.api.nvim_set_hl(0, "ObsidianTag", { italic = true, fg = c.blue })
+vim.api.nvim_set_hl(0, "ObsidianHighlightText", { fg = c.bg, bg = c.cyan })

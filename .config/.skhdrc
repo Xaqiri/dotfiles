@@ -13,9 +13,6 @@ cmd - j : yabai -m window --focus south
 cmd - k : yabai -m window --focus north
 cmd - l : yabai -m window --focus east
 
-# for native full screen
-shift + cmd - j : w=$(yabai -m query --windows --space | jq ".[] | select(.[\"has-focus\"] == false) .id"); yabai -m window --focus $w 
-
 # desktop 
 # cycle forwards on the focused display
 lalt - l : id="$(yabai -m query --spaces --display | jq 'sort_by(.index) | reverse | .[map(."has-focus") | index(true) - 1].index')" && yabai -m space --focus "${id}"
@@ -42,30 +39,30 @@ cmd + ralt - d : yabai -m window --warp north
 cmd + ralt - g : yabai -m window --warp east
 
 # move window between desktops
-lalt + shift - h : yabai -m window --space prev; yabai -m space --focus prev 
-lalt + shift - l: yabai -m window --space next; yabai -m space --focus next 
+lalt + ralt - h : yabai -m window --space prev --focus
+lalt + ralt - l: yabai -m window --space next --focus
 
 # move window between displays
-ctrl + ralt - h : yabai -m window --display west; yabai -m display --focus west
-ctrl + ralt - j : yabai -m window --display south; yabai -m display --focus south
-ctrl + ralt - k : yabai -m window --display north; yabai -m display --focus north
-ctrl + ralt - l : yabai -m window --display east; yabai -m display --focus east
+# ctrl + ralt - h : yabai -m window --display west; yabai -m display --focus west
+# ctrl + ralt - j : yabai -m window --display south; yabai -m display --focus south
+# ctrl + ralt - k : yabai -m window --display north; yabai -m display --focus north
+# ctrl + ralt - l : yabai -m window --display east; yabai -m display --focus east
 
 # resize window 
 # ralt - k : yabai -m window --resize bottom:0:-50; yabai -m window --resize top:0:-50
 # ralt - h : yabai -m window --resize left:-25:0; yabai -m window --resize right:-25:0
 # ralt - j : yabai -m window --resize bottom:0:50; yabai -m window --resize top:0:50
 # ralt - l : yabai -m window --resize left:50:0;yabai -m window --resize right:50:0
-ralt - h : yabai -m window west --resize right:-20:0 2> /dev/null || yabai -m window --resize right:-20:0
-ralt - j : yabai -m window north --resize bottom:0:20 2> /dev/null || yabai -m window --resize bottom:0:20
-ralt - k : yabai -m window south --resize top:0:-20 2> /dev/null || yabai -m window --resize top:0:-20
-ralt - l : yabai -m window east --resize left:20:0 2> /dev/null || yabai -m window --resize left:20:0
+ralt - h : yabai -m window west --resize right:-50:0 2> /dev/null || yabai -m window --resize right:-50:0 
+ralt - j : yabai -m window north --resize bottom:0:50 2> /dev/null || yabai -m window --resize bottom:0:50
+ralt - k : yabai -m window south --resize top:0:-50 2> /dev/null || yabai -m window --resize top:0:-50
+ralt - l : yabai -m window east --resize left:50:0 2> /dev/null || yabai -m window --resize left:50:0
 
 # create desktop 
 lalt + shift - n : yabai -m space --create && \
                 index="$(yabai -m query --spaces --display | jq last.index)" && \
-                yabai -m window --space "${index}" && \
                 yabai -m space --focus "${index}"
+                # yabai -m window --space "${index}" && \
 
 # destroy desktop
 lalt + shift - q : yabai -m space --destroy && yabai -m space --focus last
@@ -95,12 +92,17 @@ lalt - e : yabai -m window --toggle split
 ralt - m : yabai -m window --toggle float; yabai -m window --grid 12:12:3:0:6:12
 ralt - c : yabai -m window --toggle float; yabai -m window --grid 12:12:1:2:10:9
 # cmd + ralt - m : yabai -m window --toggle float; yabai -m window --grid 1:12:3:0:6:1
+
 # toggle window fullscreen
-ralt - f : yabai -m window --toggle zoom-fullscreen
+ralt - f : float="$(yabai -m query --windows --space | jq '.[map(."has-focus") | index(true)]' | jq '."is-floating"')" && \
+[[ $float = true ]] && \
+yabai -m window --toggle float && \
+yabai -m window --toggle zoom-fullscreen || \
+yabai -m window --toggle zoom-fullscreen
 
 # potrait orientation 
 # <rows>:<cols>:<start-x>:<start-y>:<width>:<height>
-cmd + ralt - m : yabai -m window --toggle float; yabai -m window --grid 12:12:0:3:12:6
+# cmd + ralt - m : yabai -m window --toggle float; yabai -m window --grid 12:12:0:3:12:6
 
 # Balance the window layout
 ralt - b : yabai -m space --balance

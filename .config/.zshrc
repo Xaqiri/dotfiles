@@ -31,14 +31,13 @@ source $HOME/.config/.zsh-vi-mode/zsh-vi-mode.plugin.zsh
 [ -d "/opt/homebrew/share/zsh-autosuggestions/" ] && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
     || source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-alias ls="ls -a --color"
+alias ls="ls -aH --color"
 alias rm="rm -rf"
 alias lg="lazygit"
 alias ezsh="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias relsketchybar="brew services stop sketchybar; brew services start sketchybar"
 alias relyabai="yabai --stop-service; yabai --start-service; sudo yabai --load-sa"
-# alias relyabai="launchctl kickstart -k 'gui/${UID}/homebrew.mxcl.yabai'"
 alias ebar='nvim ~/.config/sketchybar/sketchybarrc'
 alias eyabai='nvim ~/.config/yabai/yabairc'
 alias eskhd='nvim ~/.skhdrc'
@@ -66,8 +65,7 @@ alias commit="git commit -m"
 alias weather='curl -s "https://api.weather.gov/gridpoints/TAE/34,76/forecast/hourly" | jq | head -100 | grep -A 25 "\"number\": 1" | grep -w -A 1 "temperature"'
 alias serve-spring="open -a Safari localhost:8080; mvn spring-boot::run"
 alias wiki="wiki-tui"
-alias doomemacs="emacsclient -c -n"
-alias emacs="emacs --with-no-titlebar --init-dir=~/.config/emacs"
+alias e="emacsclient"
 alias internet="open -a Safari"
 # System aliases sourced from: https://gist.github.com/sebastiancarlos/ccd53b1391fc21994e722ff5b1823774
 # battery information
@@ -158,16 +156,16 @@ function suyabai () {
 }
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/go/pkg/mod/golang.org/x/tools/gopls@v0.12.2:$PATH"
+export PATH="$HOME/go/pkg/mod/golang.org/x/tools/gopls@v0.14.2:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
-export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="$HOME/miniforge3/bin:/usr/local/anaconda3/bin:$PATH"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 export PATH="/opt/homebrew/opt/dotnet/libexec:$PATH"
 export PATH="/Users/xaqiri/.dotnet/tools:$PATH"
+export PATH="$HOME/.ghcup/ghc/9.2.7/bin:$PATH"
 export DOTNET_ROOT="/opt/homebrew/opt/dotnet/libexec"
 export NNN_TMPFILE="$HOME/.config/nnn/.lastd"
 export EDITOR="$(which nvim)"
@@ -193,3 +191,5 @@ PROMPT=$topPrompt$botPrompt
 [[ ! -r /Users/xaqiri/.opam/opam-init/init.zsh ]] || source /Users/xaqiri/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
 [ -f "/Users/xaqiri/.ghcup/env" ] && source "/Users/xaqiri/.ghcup/env" # ghcup-env
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

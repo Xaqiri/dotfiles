@@ -1,6 +1,7 @@
 local keymap = vim.keymap.set
 vim.g.mapleader = " "
 
+keymap('n', '<leader>fo', 'gf', { desc = 'Go to file under cursor' })
 keymap('n', '<leader>mf', '<cmd>e %:p:h/<cfile><cr>', { desc = 'Creates file under cursor in current directory' })
 keymap('n', '<leader>gx', '<cmd>!open <cfile> -a Safari<cr>', { desc = 'Open link under cursor in browser' })
 keymap('n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<cr>', { desc = 'Line Diagnostics' })
@@ -18,7 +19,7 @@ keymap('n', '<leader>/', '<Plug>(comment_toggle_linewise_current)', { desc = 'Co
 keymap('x', '<leader>/', '<Plug>(comment_toggle_linewise_visual)gv', { desc = 'Comment block' })
 keymap('n', '<leader>ss', ':split<cr>')
 keymap('n', '<leader>sv', ':vsplit<cr>')
-keymap('n', '<leader>sx', ':close<cr>')
+keymap('n', '<leader>sd', ':close<cr>')
 keymap('n', '<leader>bd', ':bd<cr>')
 keymap('n', '<leader>j', '<C-w>j', { desc = 'Move to split above' })
 keymap('n', '<leader>k', '<C-w>k', { desc = 'Move to split below' })
@@ -87,6 +88,14 @@ keymap('n', ']t', '<Plugin>(jump_next())')
 
 keymap('n', '<leader>cf', '<cmd>lua vim.lsp.buf.format({async=true})<cr>', { desc = "Format code in current buffer" })
 keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = "Perform code action" })
+
+
+-- Obsidian
+keymap('n', '<leader>oo', '<cmd>ObsidianOpen<cr>', { desc = "Obsidian: Open current file in Obsidian" })
+keymap('n', '<leader>ob', '<cmd>ObsidianBacklinks<cr>', { desc = "Obsidian: Show backlinks" })
+keymap('n', '<leader>on', '<cmd>ObsidianNew<cr>', { desc = "Obsidian: Create a new note" })
+keymap('v', '<leader>ol', '<cmd>\'<, \'>ObsidianLink<cr>', { desc = "Obsidian: Create a link using selected text" })
+
 
 -- Command to saving, converting, and opening markdown files
 -- vim.api.nvim_create_user_command('MD', 'w | silent !markdown "%" > "%":r.html | open "%":r.html -a Safari', {})
